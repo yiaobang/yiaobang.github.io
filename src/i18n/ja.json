@@ -1,10 +1,10 @@
 {
-  "title": "私の留学生活",
-  "welcome": "私のページへようこそ！私は留学生で、日々の留学生活や体験をシェアしています。",
+  "title": "私の生活日記",
+  "welcome": "私のページへようこそ！ここでは日常生活、旅行体験、面白い出来事をシェアしています。",
   "find_projects": "こちらで私のプロジェクトを見つけることができます：",
   "my_github": "私のGitHub",
   "language_selector": "Language",
-  "life_categories": "生活カテゴリー",
+  "life_categories": "コンテンツカテゴリー",
   "categories": {
     "travel": "旅行編",
     "cooking": "料理編",
@@ -12,6 +12,78 @@
     "daily": "日常編"
   },
   "about_title": "私について",
-  "about_text": "私は新しい文化や体験を探求することが大好きな留学生です。このページでは、旅行の思い出、料理の実験、勉強の気づきなど、留学生活をシェアしたいと思います。",
-  "current_status": "現在の状況：勉強頑張中 📚"
+  "about_text": "新しいことや異なる文化を体験することが大好きです。ここでは旅行の思い出、美食の発見、学びの気づき、生活の感想などをシェアしています。",
+  "current_status": "現在の状況：勉強頑張中 📚",
+  "back_to_timeline": "← タイムラインに戻る",
+  "back_to_home": "← ホームに戻る",
+  "photo_gallery": "📸 フォトギャラリー",
+  "photos_count": "枚の写真",
+  "loading_photos": "写真を読み込み中...",
+  "view_full_size": "📷 大きなサイズで表示",
+  "travel_story": "✨ 旅行の思い出",
+  "view_photos": "📸 写真を見る",
+  "trip_not_found": "旅行が見つかりません",
+  "travel_data": {
+    "1": {
+      "location": "しまなみ海道",
+      "date": "2024-07-29~30",
+      "description": "島々を繋ぐ素晴らしいサイクリングルート！海景と橋が絶景です！",
+      "short_description": "島々を繋ぐサイクリングルート"
+    },
+    "2": {
+      "location": "生駒山",
+      "date": "2024-08-11",
+      "description": "美しい山の景色と静かな自然散歩。",
+      "short_description": "山の景色と自然"
+    },
+    "3": {
+      "location": "自転車博物館",
+      "date": "2024-08-16",
+      "description": "自転車の歴史と文化を探索。",
+      "short_description": "自転車の歴史と文化を探索"
+    },
+    "4": {
+      "location": "ある午後",
+      "date": "2024-09-04",
+      "description": "時に刻まれた静かな瞬間。",
+      "short_description": "静かな瞬間"
+    },
+    "5": {
+      "location": "奈良金剛山",
+      "date": "2024-09-16",
+      "description": "チャレンジングな登山と素晴らしい景色。",
+      "short_description": "チャレンジングな登山"
+    },
+    "6": {
+      "location": "夜景",
+      "date": "2024-12-20",
+      "description": "美しい街の灯りと魅的な夜の雰囲気。",
+      "short_description": "美しい街の夜景"
+    },
+    "7": {
+      "location": "お花見",
+      "date": "2025-04-06",
+      "description": "満開の美しい桜の季節！",
+      "short_description": "満開の美しい桜の季節"
+    },
+    "8": {
+      "location": "あべのハルカス、大阪",
+      "date": "2025-05-06",
+      "description": "日本一高いビルからの絶景！",
+      "short_description": "日本一高いビルからの絶景"
+    }
+  },
+  "category_descriptions": {
+    "travel": "新しい場所や文化を探索",
+    "cooking": "地元の料理やレシピを試す",
+    "study": "学術生活と学習経験",
+    "daily": "日常の瞬間と発見"
+  },
+  "view_arrow": "表示 →",
+  "coming_soon": "近日公開...",
+  "stat_labels": {
+    "exploring": "探索中",
+    "learning": "学習中",
+    "growing": "成長中"
+  }
 }

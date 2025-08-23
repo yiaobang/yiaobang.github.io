@@ -1,10 +1,10 @@
 {
-  "title": "My Study Abroad Life",
-  "welcome": "Welcome to my page! I'm an international student sharing my study abroad journey and daily life experiences.",
+  "title": "My Life Journal",
+  "welcome": "Welcome to my page! Here I share my daily life, travel experiences, and interesting moments.",
   "find_projects": "You can find my projects here:",
   "my_github": "My GitHub",
   "language_selector": "Language",
-  "life_categories": "Life Categories",
+  "life_categories": "Content Categories",
   "categories": {
     "travel": "Travel Stories",
     "cooking": "Cooking Adventures",
@@ -12,6 +12,78 @@
     "daily": "Daily Moments"
   },
   "about_title": "About Me",
-  "about_text": "I'm an international student who loves exploring new cultures and experiences. Through this page, I want to share my study abroad life, including travel stories, cooking experiments, study insights, and daily moments.",
-  "current_status": "Current Status: Studying hard 📚"
+  "about_text": "I love exploring new things and experiencing different cultures. Here I share my daily life, including travel stories, food discoveries, learning insights, and life reflections.",
+  "current_status": "Current Status: Studying hard 📚",
+  "back_to_timeline": "← Back to Timeline",
+  "back_to_home": "← Back to Home",
+  "photo_gallery": "📸 Photo Gallery",
+  "photos_count": "photos",
+  "loading_photos": "Loading photos...",
+  "view_full_size": "📷 View Full Size",
+  "travel_story": "✨ Travel Story",
+  "view_photos": "📸 View Photos",
+  "trip_not_found": "Trip not found",
+  "travel_data": {
+    "1": {
+      "location": "Shimanami Kaido",
+      "date": "2024-07-29~30",
+      "description": "Amazing cycling route connecting islands with beautiful ocean views and bridges!",
+      "short_description": "Cycling route connecting islands"
+    },
+    "2": {
+      "location": "Mount Ikoma",
+      "date": "2024-08-11",
+      "description": "Beautiful mountain views and peaceful nature walks with stunning panoramas.",
+      "short_description": "Mountain views and nature"
+    },
+    "3": {
+      "location": "Bicycle Museum",
+      "date": "2024-08-16",
+      "description": "Fascinating history of bicycles and cycling culture exploration.",
+      "short_description": "Exploring cycling history and culture"
+    },
+    "4": {
+      "location": "Peaceful Afternoon",
+      "date": "2024-09-04",
+      "description": "A quiet moment captured in time, simple beauty of everyday life.",
+      "short_description": "A quiet moment in time"
+    },
+    "5": {
+      "location": "Mount Kongo, Nara",
+      "date": "2024-09-16",
+      "description": "Challenging mountain hike with rewarding views and nature immersion.",
+      "short_description": "Mountain hiking adventure"
+    },
+    "6": {
+      "location": "Night Views",
+      "date": "2024-12-20",
+      "description": "Stunning city lights and magical night atmosphere.",
+      "short_description": "Stunning night cityscape"
+    },
+    "7": {
+      "location": "Cherry Blossom Viewing",
+      "date": "2025-04-06",
+      "description": "Beautiful sakura season in full bloom, spring at its finest!",
+      "short_description": "Beautiful sakura season in full bloom"
+    },
+    "8": {
+      "location": "Abeno Harukas, Osaka",
+      "date": "2025-05-06",
+      "description": "Amazing views from Japan's tallest building, breathtaking cityscape!",
+      "short_description": "Tallest building in Japan with amazing city views"
+    }
+  },
+  "category_descriptions": {
+    "travel": "Exploring new places and cultures",
+    "cooking": "Trying local cuisines and recipes",
+    "study": "Academic life and learning experiences",
+    "daily": "Everyday moments and discoveries"
+  },
+  "view_arrow": "View →",
+  "coming_soon": "Coming Soon...",
+  "stat_labels": {
+    "exploring": "Exploring",
+    "learning": "Learning",
+    "growing": "Growing"
+  }
 }

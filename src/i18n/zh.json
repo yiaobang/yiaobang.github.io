@@ -1,10 +1,10 @@
 {
-  "title": "我的留学生活分享",
-  "welcome": "欢迎来到我的页面！我是一名正在海外留学的学生，想和大家分享我的留学生活点滴。",
+  "title": "我的生活分享",
+  "welcome": "欢迎来到我的页面！这里记录着我的日常生活、旅行见闻和一些有趣的经历。",
   "find_projects": "你可以在这里找到我的项目：",
   "my_github": "我的 GitHub",
   "language_selector": "Language",
-  "life_categories": "生活分类",
+  "life_categories": "内容分类",
   "categories": {
     "travel": "旅游篇",
     "cooking": "料理篇",
@@ -12,6 +12,78 @@
     "daily": "日常篇"
   },
   "about_title": "关于我",
-  "about_text": "我是一名海外留学生，热爱探索新的文化和体验。通过这个页面，我想分享我的留学生活，包括旅行见闻、料理尝试、学习心得等等。",
-  "current_status": "当前状态：努力学习中 📚"
+  "about_text": "热爱探索新事物和体验不同文化。在这里分享我的日常生活，包括旅行见闻、美食探索、学习心得和生活感悟。",
+  "current_status": "当前状态：努力学习中 📚",
+  "back_to_timeline": "← 返回时间轴",
+  "back_to_home": "← 返回主页",
+  "photo_gallery": "📸 照片集",
+  "photos_count": "张照片",
+  "loading_photos": "加载照片中...",
+  "view_full_size": "📷 查看大图",
+  "travel_story": "✨ 旅行故事",
+  "view_photos": "📸 查看照片",
+  "trip_not_found": "未找到此行程",
+  "travel_data": {
+    "1": {
+      "location": "岛波海道",
+      "date": "2024-07-29~30",
+      "description": "连接岛屿的绝美骑行路线，海景和大桥令人震撼！",
+      "short_description": "连接岛屿的骑行路线"
+    },
+    "2": {
+      "location": "生驹山",
+      "date": "2024-08-11",
+      "description": "美丽的山景和宁静的自然漫步，全景令人难忘。",
+      "short_description": "山景与自然"
+    },
+    "3": {
+      "location": "自行车博物馆",
+      "date": "2024-08-16",
+      "description": "迷人的自行车历史和骑行文化探索之旅。",
+      "short_description": "探索自行车历史文化"
+    },
+    "4": {
+      "location": "某个午后",
+      "date": "2024-09-04",
+      "description": "被定格的宁静时光，日常生活中的简单美好。",
+      "short_description": "宁静的时光"
+    },
+    "5": {
+      "location": "奈良金刚山",
+      "date": "2024-09-16",
+      "description": "具有挑战性的登山之旅，收获美景与自然沉浸。",
+      "short_description": "登山冒险之旅"
+    },
+    "6": {
+      "location": "夜景",
+      "date": "2024-12-20",
+      "description": "迷人的城市灯光和神奇的夜晚氛围。",
+      "short_description": "迷人的城市夜景"
+    },
+    "7": {
+      "location": "赏樱",
+      "date": "2025-04-06",
+      "description": "樱花盛开的美丽季节，春天最美的时刻！",
+      "short_description": "樱花盛开的美丽季节"
+    },
+    "8": {
+      "location": "大阪阿倍野哈鲁卡斯",
+      "date": "2025-05-06",
+      "description": "从日本最高楼俯瞰的惊人景色，令人屏息的城市景观！",
+      "short_description": "日本最高楼，俯瞰城市美景"
+    }
+  },
+  "category_descriptions": {
+    "travel": "探索新的地方和文化",
+    "cooking": "尝试当地美食和食谱",
+    "study": "学术生活和学习经历",
+    "daily": "日常生活的瞬间和发现"
+  },
+  "view_arrow": "查看 →",
+  "coming_soon": "即将推出...",
+  "stat_labels": {
+    "exploring": "探索中",
+    "learning": "学习中",
+    "growing": "成长中"
+  }
 }

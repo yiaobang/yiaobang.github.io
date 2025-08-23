@@ -17,15 +17,15 @@ const AboutSection = () => {
         <div className="about-stats">
           <div className="stat-item">
             <div className="stat-number">🌍</div>
-            <div className="stat-label">Exploring</div>
+            <div className="stat-label">{t('stat_labels.exploring')}</div>
           </div>
           <div className="stat-item">
             <div className="stat-number">📚</div>
-            <div className="stat-label">Learning</div>
+            <div className="stat-label">{t('stat_labels.learning')}</div>
           </div>
           <div className="stat-item">
             <div className="stat-number">✨</div>
-            <div className="stat-label">Growing</div>
+            <div className="stat-label">{t('stat_labels.growing')}</div>
           </div>
         </div>
       </div>
