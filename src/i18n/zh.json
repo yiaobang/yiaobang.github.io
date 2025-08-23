@@ -1,7 +1,17 @@
 {
-  "title": "我的 GitHub 个人页面",
-  "welcome": "欢迎来到我的页面！我是一名热爱编程的开发者。",
+  "title": "我的留学生活分享",
+  "welcome": "欢迎来到我的页面！我是一名正在海外留学的学生，想和大家分享我的留学生活点滴。",
   "find_projects": "你可以在这里找到我的项目：",
   "my_github": "我的 GitHub",
-  "language_selector": "语言"
+  "language_selector": "Language",
+  "life_categories": "生活分类",
+  "categories": {
+    "travel": "旅游篇",
+    "cooking": "料理篇",
+    "study": "学习篇",
+    "daily": "日常篇"
+  },
+  "about_title": "关于我",
+  "about_text": "我是一名海外留学生，热爱探索新的文化和体验。通过这个页面，我想分享我的留学生活，包括旅行见闻、料理尝试、学习心得等等。",
+  "current_status": "当前状态：努力学习中 📚"
 }

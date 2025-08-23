@@ -18,12 +18,24 @@ const resources = {
   },
 } as const; // 使用 as const 来帮助 TypeScript 推断类型
 
+// 检测浏览器语言
+const getBrowserLanguage = () => {
+  const browserLang = navigator.language || navigator.languages[0];
+  const supportedLanguages = ['zh', 'en', 'ja'];
+  
+  if (browserLang.startsWith('zh')) return 'zh';
+  if (browserLang.startsWith('ja')) return 'ja';
+  if (browserLang.startsWith('en')) return 'en';
+  
+  return 'en'; // 默认英文
+};
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'zh',
-    fallbackLng: 'zh',
+    lng: getBrowserLanguage(),
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },

@@ -1,7 +1,17 @@
 {
-  "title": "私のGitHub個人ページ",
-  "welcome": "私のページへようこそ！私はコーディングが大好きな開発者です。",
+  "title": "私の留学生活",
+  "welcome": "私のページへようこそ！私は留学生で、日々の留学生活や体験をシェアしています。",
   "find_projects": "こちらで私のプロジェクトを見つけることができます：",
   "my_github": "私のGitHub",
-  "language_selector": "言語"
+  "language_selector": "Language",
+  "life_categories": "生活カテゴリー",
+  "categories": {
+    "travel": "旅行編",
+    "cooking": "料理編",
+    "study": "勉強編",
+    "daily": "日常編"
+  },
+  "about_title": "私について",
+  "about_text": "私は新しい文化や体験を探求することが大好きな留学生です。このページでは、旅行の思い出、料理の実験、勉強の気づきなど、留学生活をシェアしたいと思います。",
+  "current_status": "現在の状況：勉強頑張中 📚"
 }

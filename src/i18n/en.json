@@ -1,7 +1,17 @@
 {
-  "title": "My GitHub Personal Page",
-  "welcome": "Welcome to my page! I'm a developer who loves coding.",
+  "title": "My Study Abroad Life",
+  "welcome": "Welcome to my page! I'm an international student sharing my study abroad journey and daily life experiences.",
   "find_projects": "You can find my projects here:",
   "my_github": "My GitHub",
-  "language_selector": "Language"
+  "language_selector": "Language",
+  "life_categories": "Life Categories",
+  "categories": {
+    "travel": "Travel Stories",
+    "cooking": "Cooking Adventures",
+    "study": "Study Life",
+    "daily": "Daily Moments"
+  },
+  "about_title": "About Me",
+  "about_text": "I'm an international student who loves exploring new cultures and experiences. Through this page, I want to share my study abroad life, including travel stories, cooking experiments, study insights, and daily moments.",
+  "current_status": "Current Status: Studying hard 📚"
 }
