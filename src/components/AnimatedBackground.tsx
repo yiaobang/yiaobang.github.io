@@ -18,14 +18,25 @@ interface FloatingShape {
   size: number;
   rotation: number;
   rotationSpeed: number;
-  type: 'circle' | 'triangle' | 'square';
+  type: 'circle' | 'triangle' | 'square' | 'hexagon' | 'diamond';
   opacity: number;
+  pulsePhase: number;
+}
+
+interface GridLine {
+  x: number;
+  y: number;
+  angle: number;
+  length: number;
+  opacity: number;
+  speed: number;
 }
 
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const shapesRef = useRef<FloatingShape[]>([]);
+  const gridLinesRef = useRef<GridLine[]>([]);
   const animationRef = useRef<number>();
   const timeRef = useRef<number>(0);
 
@@ -60,49 +71,94 @@ const AnimatedBackground = () => {
 
     const createFloatingShapes = () => {
       const shapes: FloatingShape[] = [];
-      const shapeCount = Math.min(20, Math.floor((canvas.width * canvas.height) / 50000));
-      const types: ('circle' | 'triangle' | 'square')[] = ['circle', 'triangle', 'square'];
+      const shapeCount = Math.min(30, Math.floor((canvas.width * canvas.height) / 40000));
+      const types: ('circle' | 'triangle' | 'square' | 'hexagon' | 'diamond')[] = ['circle', 'triangle', 'square', 'hexagon', 'diamond'];
       
       for (let i = 0; i < shapeCount; i++) {
         shapes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          size: Math.random() * 30 + 10,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          size: Math.random() * 40 + 15,
           rotation: Math.random() * Math.PI * 2,
-          rotationSpeed: (Math.random() - 0.5) * 0.02,
+          rotationSpeed: (Math.random() - 0.5) * 0.03,
           type: types[Math.floor(Math.random() * types.length)],
-          opacity: Math.random() * 0.1 + 0.05,
+          opacity: Math.random() * 0.15 + 0.05,
+          pulsePhase: Math.random() * Math.PI * 2,
         });
       }
       return shapes;
+    };
+
+    const createGridLines = () => {
+      const lines: GridLine[] = [];
+      const lineCount = Math.min(15, Math.floor((canvas.width * canvas.height) / 80000));
+      
+      for (let i = 0; i < lineCount; i++) {
+        lines.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          angle: Math.random() * Math.PI * 2,
+          length: Math.random() * 200 + 100,
+          opacity: Math.random() * 0.1 + 0.02,
+          speed: Math.random() * 0.5 + 0.2,
+        });
+      }
+      return lines;
     };
 
     const drawShape = (shape: FloatingShape) => {
       ctx.save();
       ctx.translate(shape.x, shape.y);
       ctx.rotate(shape.rotation);
-      ctx.fillStyle = `rgba(255, 255, 255, ${shape.opacity})`;
-      ctx.strokeStyle = `rgba(255, 255, 255, ${shape.opacity * 0.5})`;
-      ctx.lineWidth = 1;
+      
+      // 添加脉动效果
+      const pulse = Math.sin(timeRef.current * 3 + shape.pulsePhase) * 0.2 + 1;
+      const currentSize = shape.size * pulse;
+      const currentOpacity = shape.opacity * pulse;
+      
+      ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
+      ctx.strokeStyle = `rgba(255, 255, 255, ${currentOpacity * 0.7})`;
+      ctx.lineWidth = 1.5;
       
       switch (shape.type) {
         case 'circle':
           ctx.beginPath();
-          ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.arc(0, 0, currentSize / 2, 0, Math.PI * 2);
+          ctx.stroke();
           break;
         case 'triangle':
           ctx.beginPath();
-          ctx.moveTo(0, -shape.size / 2);
-          ctx.lineTo(-shape.size / 2, shape.size / 2);
-          ctx.lineTo(shape.size / 2, shape.size / 2);
+          ctx.moveTo(0, -currentSize / 2);
+          ctx.lineTo(-currentSize / 2, currentSize / 2);
+          ctx.lineTo(currentSize / 2, currentSize / 2);
           ctx.closePath();
           ctx.stroke();
           break;
         case 'square':
-          ctx.strokeRect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
+          ctx.strokeRect(-currentSize / 2, -currentSize / 2, currentSize, currentSize);
+          break;
+        case 'hexagon':
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3;
+            const x = Math.cos(angle) * currentSize / 2;
+            const y = Math.sin(angle) * currentSize / 2;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'diamond':
+          ctx.beginPath();
+          ctx.moveTo(0, -currentSize / 2);
+          ctx.lineTo(currentSize / 2, 0);
+          ctx.lineTo(0, currentSize / 2);
+          ctx.lineTo(-currentSize / 2, 0);
+          ctx.closePath();
+          ctx.stroke();
           break;
       }
       ctx.restore();
@@ -145,6 +201,39 @@ const AnimatedBackground = () => {
       };
       
       drawFlowingLights();
+      
+      // 绘制动态网格线
+      gridLinesRef.current.forEach(line => {
+        line.x += Math.cos(line.angle) * line.speed;
+        line.y += Math.sin(line.angle) * line.speed;
+        
+        // 边界检查
+        if (line.x < -line.length) line.x = canvas.width + line.length;
+        if (line.x > canvas.width + line.length) line.x = -line.length;
+        if (line.y < -line.length) line.y = canvas.height + line.length;
+        if (line.y > canvas.height + line.length) line.y = -line.length;
+        
+        ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(line.x, line.y);
+        ctx.lineTo(
+          line.x + Math.cos(line.angle) * line.length,
+          line.y + Math.sin(line.angle) * line.length
+        );
+        ctx.stroke();
+      });
+      
+      // 添加脉冲圆环
+      for (let i = 0; i < 3; i++) {
+        const radius = (timeRef.current * 50 + i * 100) % 300;
+        const opacity = (300 - radius) / 300 * 0.1;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(canvas.width * 0.2 + i * canvas.width * 0.3, canvas.height * 0.3 + i * canvas.height * 0.2, radius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
       
       // 更新和绘制浮动图形
       shapesRef.current.forEach(shape => {
@@ -216,12 +305,14 @@ const AnimatedBackground = () => {
     resizeCanvas();
     particlesRef.current = createParticles();
     shapesRef.current = createFloatingShapes();
+    gridLinesRef.current = createGridLines();
     animate();
 
     window.addEventListener('resize', () => {
       resizeCanvas();
       particlesRef.current = createParticles();
       shapesRef.current = createFloatingShapes();
+      gridLinesRef.current = createGridLines();
     });
 
     return () => {
