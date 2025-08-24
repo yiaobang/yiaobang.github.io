@@ -1,10 +1,9 @@
 {
-  "title": "私の生活日記",
-  "welcome": "私のページへようこそ！ここでは日常生活、旅行体験、面白い出来事をシェアしています。",
-  "find_projects": "こちらで私のプロジェクトを見つけることができます：",
-  "my_github": "私のGitHub",
+  "title": "Yiaobang's Blog",
+  "welcome": "私のブログへようこそ！旅行の物語、生活の気づき、面白い体験をシェアしています。",
+
   "language_selector": "Language",
-  "life_categories": "コンテンツカテゴリー",
+  "life_categories": "書いていること",
   "categories": {
     "travel": "旅行編",
     "cooking": "料理編",
@@ -12,8 +11,8 @@
     "daily": "日常編"
   },
   "about_title": "私について",
-  "about_text": "新しいことや異なる文化を体験することが大好きです。ここでは旅行の思い出、美食の発見、学びの気づき、生活の感想などをシェアしています。",
-  "current_status": "現在の状況：勉強頑張中 📚",
+  "about_text": "旅行や新しい体験が大好きです。このブログでは旅行の記録、日常の感想、面白かったことなどを書いています。",
+  "current_status": "現在の状況：日本語勉強中 📚",
   "back_to_timeline": "← タイムラインに戻る",
   "back_to_home": "← ホームに戻る",
   "photo_gallery": "📸 フォトギャラリー",
@@ -85,5 +84,9 @@
     "exploring": "探索中",
     "learning": "学習中",
     "growing": "成長中"
-  }
+  },
+  "load_more": "もっと読み込む",
+  "photos_remaining": "枚残っています",
+  "viewer_hint_title": "💡 使い方",
+  "viewer_hint_text": "← → キーでナビゲーション | スクロールでズーム | 画像クリックで閉じる | ESCで終了"
 }

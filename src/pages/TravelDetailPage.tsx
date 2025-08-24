@@ -12,6 +12,8 @@ const TravelDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [displayedPhotos, setDisplayedPhotos] = useState(12);
+  const [showLoadMore, setShowLoadMore] = useState(false);
 
   const openViewer = (index: number) => {
     setCurrentPhotoIndex(index);
@@ -139,7 +141,9 @@ const TravelDetailPage = () => {
             ]
           };
           
-          setPhotos(photoMap[folderMap[id]] || []);
+          const allPhotos = photoMap[folderMap[id]] || [];
+          setPhotos(allPhotos);
+          setShowLoadMore(allPhotos.length > 12);
         } catch (error) {
           console.error('Error loading photos:', error);
         }
@@ -177,16 +181,39 @@ const TravelDetailPage = () => {
         {loading ? (
           <div className="loading">{t('loading_photos')}</div>
         ) : (
-          <div className="photos-grid">
-            {photos.map((photo, index) => (
-              <div key={index} className="photo-item" onClick={() => openViewer(index)}>
-                <img src={photo} alt={`Photo ${index + 1}`} className="photo-image" />
-                <div className="photo-overlay">
-                  <span>{t('view_full_size')}</span>
+          <>
+            <div className="photos-grid">
+              {photos.slice(0, displayedPhotos).map((photo, index) => (
+                <div key={index} className="photo-item" onClick={() => openViewer(index)}>
+                  <img 
+                    src={photo} 
+                    alt={`Photo ${index + 1}`} 
+                    className="photo-image"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="photo-overlay">
+                    <span>{t('view_full_size')}</span>
+                  </div>
                 </div>
+              ))}
+            </div>
+            {showLoadMore && displayedPhotos < photos.length && (
+              <div className="load-more-container">
+                <button 
+                  className="load-more-button" 
+                  onClick={() => {
+                    setDisplayedPhotos(prev => Math.min(prev + 12, photos.length));
+                    if (displayedPhotos + 12 >= photos.length) {
+                      setShowLoadMore(false);
+                    }
+                  }}
+                >
+                  {t('load_more')} ({photos.length - displayedPhotos} {t('photos_remaining')})
+                </button>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
 

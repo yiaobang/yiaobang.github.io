@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./components/LanguageSelector";
 import AnimatedBackground from "./components/AnimatedBackground";
-import LifeCategoriesSection from "./components/SkillsSection";
+import LifeCategoriesSection from "./components/LifeCategoriesSection";
 import AboutSection from "./components/AboutSection";
 import TravelPage from "./pages/TravelPage";
 import TravelDetailPage from "./pages/TravelDetailPage";
@@ -14,23 +14,15 @@ const HomePage = () => {
   return (
     <main className="main-content">
       <div className="hero-section">
-        <h1 className="title">{t("title")}</h1>
-        <p className="subtitle">{t("welcome")}</p>
+        <div className="blog-header">
+          <h1 className="blog-title">{t("title")}</h1>
+          <p className="blog-subtitle">{t("welcome")}</p>
+        </div>
         
         <AboutSection />
         <LifeCategoriesSection />
         
-        <div className="cta-section">
-          <p>{t("find_projects")}</p>
-          <a
-            className="github-link"
-            href="https://github.com/yiaobang"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("my_github")}
-          </a>
-        </div>
+
       </div>
     </main>
   );

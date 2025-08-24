@@ -6,7 +6,6 @@ const AboutSection = () => {
 
   return (
     <section className="about-section">
-      <h2 className="section-title">{t('about_title')}</h2>
       <div className="about-content">
         <div className="about-text">
           <p>{t('about_text')}</p>
@@ -27,6 +26,15 @@ const AboutSection = () => {
             <div className="stat-number">✨</div>
             <div className="stat-label">{t('stat_labels.growing')}</div>
           </div>
+          <a 
+            href="https://github.com/yiaobang" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="stat-item github-stat"
+          >
+            <div className="stat-number">💻</div>
+            <div className="stat-label">GitHub</div>
+          </a>
         </div>
       </div>
     </section>

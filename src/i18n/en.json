@@ -1,10 +1,9 @@
 {
-  "title": "My Life Journal",
-  "welcome": "Welcome to my page! Here I share my daily life, travel experiences, and interesting moments.",
-  "find_projects": "You can find my projects here:",
-  "my_github": "My GitHub",
+  "title": "Yiaobang's Blog",
+  "welcome": "Welcome to my blog! Here I share travel stories, life insights, and interesting experiences.",
+
   "language_selector": "Language",
-  "life_categories": "Content Categories",
+  "life_categories": "What I Write About",
   "categories": {
     "travel": "Travel Stories",
     "cooking": "Cooking Adventures",
@@ -12,8 +11,8 @@
     "daily": "Daily Moments"
   },
   "about_title": "About Me",
-  "about_text": "I love exploring new things and experiencing different cultures. Here I share my daily life, including travel stories, food discoveries, learning insights, and life reflections.",
-  "current_status": "Current Status: Studying hard 📚",
+  "about_text": "Love traveling and trying new things. This blog is where I share travel memories, daily thoughts, and interesting stuff I come across.",
+  "current_status": "Current Status: Learning Japanese 📚",
   "back_to_timeline": "← Back to Timeline",
   "back_to_home": "← Back to Home",
   "photo_gallery": "📸 Photo Gallery",
@@ -85,5 +84,9 @@
     "exploring": "Exploring",
     "learning": "Learning",
     "growing": "Growing"
-  }
+  },
+  "load_more": "Load More",
+  "photos_remaining": "remaining",
+  "viewer_hint_title": "💡 Usage Tips",
+  "viewer_hint_text": "← → Navigate | Scroll to zoom | Click image to close | ESC to exit"
 }

@@ -1,10 +1,9 @@
 {
-  "title": "我的生活分享",
-  "welcome": "欢迎来到我的页面！这里记录着我的日常生活、旅行见闻和一些有趣的经历。",
-  "find_projects": "你可以在这里找到我的项目：",
-  "my_github": "我的 GitHub",
+  "title": "Yiaobang's Blog",
+  "welcome": "欢迎来到我的博客！这里分享我的旅行故事、生活感悟和一些有趣的经历。",
+
   "language_selector": "Language",
-  "life_categories": "内容分类",
+  "life_categories": "写了什么",
   "categories": {
     "travel": "旅游篇",
     "cooking": "料理篇",
@@ -12,8 +11,8 @@
     "daily": "日常篇"
   },
   "about_title": "关于我",
-  "about_text": "热爱探索新事物和体验不同文化。在这里分享我的日常生活，包括旅行见闻、美食探索、学习心得和生活感悟。",
-  "current_status": "当前状态：努力学习中 📚",
+  "about_text": "喜欢旅行和尝试新事物。在这个博客里记录旅行的点滴、日常的想法和一些有意思的事情。",
+  "current_status": "当前状态：努力学习日语中 📚",
   "back_to_timeline": "← 返回时间轴",
   "back_to_home": "← 返回主页",
   "photo_gallery": "📸 照片集",
@@ -85,5 +84,9 @@
     "exploring": "探索中",
     "learning": "学习中",
     "growing": "成长中"
-  }
+  },
+  "load_more": "加载更多",
+  "photos_remaining": "张剩余",
+  "viewer_hint_title": "💡 使用提示",
+  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出"
 }

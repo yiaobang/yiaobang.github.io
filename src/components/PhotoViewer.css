@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.98);
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -21,33 +21,12 @@
   align-items: center;
 }
 
-.close-button {
-  position: absolute;
-  top: -50px;
-  right: 0;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.close-button:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
 .photo-container {
   position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  overflow: visible;
 }
 
 .viewer-image {
@@ -55,17 +34,16 @@
   max-height: 70vh;
   object-fit: contain;
   border-radius: 8px;
+  cursor: pointer;
+  transform-origin: center;
 }
 
 .nav-button {
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: none;
   border: none;
   color: white;
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  font-size: 5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -73,18 +51,24 @@
   transition: all 0.3s ease;
   top: 50%;
   transform: translateY(-50%);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  z-index: 2003;
+  pointer-events: auto;
 }
 
 .nav-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transform: translateY(-50%) scale(1.2);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 1);
 }
 
 .nav-button.prev {
-  left: -70px;
+  left: -15px;
 }
 
 .nav-button.next {
-  right: -70px;
+  right: -15px;
 }
 
 .photo-info {
@@ -124,13 +108,76 @@
   border-color: white;
 }
 
+.usage-hint {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 2002;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.hint-content p {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.hint-content p:first-child {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.zoom-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 2004;
+  backdrop-filter: blur(10px);
+  animation: zoomFade 1.5s ease-out;
+  pointer-events: none;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes zoomFade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
 @media (max-width: 768px) {
+  .nav-button {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+  }
+  
   .nav-button.prev {
-    left: -40px;
+    left: -10px;
   }
   
   .nav-button.next {
-    right: -40px;
+    right: -10px;
   }
   
   .viewer-image {
