@@ -43,3 +43,36 @@
   background: rgba(30, 30, 30, 0.9);
   color: white;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .language-selector {
+    top: 15px;
+    right: 15px;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+  
+  .language-hint {
+    display: none; /* Hide hint text on mobile */
+  }
+  
+  .language-selector select {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-selector {
+    top: 10px;
+    right: 10px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    min-width: auto;
+  }
+  
+  .language-selector select {
+    font-size: 12px;
+    padding: 2px;
+  }
+}
