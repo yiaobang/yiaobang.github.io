@@ -14,15 +14,8 @@ const HomePage = () => {
   return (
     <main className="main-content">
       <div className="hero-section">
-        <div className="blog-header">
-          <h1 className="blog-title">{t("title")}</h1>
-          <p className="blog-subtitle">{t("welcome")}</p>
-        </div>
-        
         <AboutSection />
         <LifeCategoriesSection />
-        
-
       </div>
     </main>
   );
