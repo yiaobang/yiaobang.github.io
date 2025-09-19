@@ -1,6 +1,12 @@
 {
   "title": "Yiaobang's Blog",
   "welcome": "私のブログへようこそ！旅行の物語、生活の気づき、面白い体験をシェアしています。",
+  "hero": {
+    "title": "こんにちは、Yiaobangです",
+    "subtitle": "旅行の記録、日常のシェア、世界の美しさを探求",
+    "learnMore": "もっと知る",
+    "explore": "コンテンツを探す"
+  },
 
   "language_selector": "Language",
   "life_categories": "書いていること",
@@ -83,10 +89,17 @@
   "stat_labels": {
     "exploring": "探索中",
     "learning": "学習中",
-    "growing": "成長中"
+    "growing": "成長中",
+    "places": "か所",
+    "target": "目標 N2",
+    "hobby": "写真好き"
   },
   "load_more": "もっと読み込む",
   "photos_remaining": "枚残っています",
   "viewer_hint_title": "💡 使い方",
-  "viewer_hint_text": "← → キーでナビゲーション | スクロールでズーム | 画像クリックで閉じる | ESCで終了"
+  "viewer_hint_text": "← → キーでナビゲーション | スクロールでズーム | 画像クリックで閉じる | ESCで終了",
+  "github_projects": "GitHub プロジェクト",
+  "project_description": "JavaFXで開発したクロスプラットフォームシリアルポートデバッグツール。多言語インターフェース（中文、英語、日本語）に対応し、豊富なシリアル通信機能を提供します。",
+  "view_on_github": "GitHub で見る",
+  "view_details": "詳細を見る"
 }

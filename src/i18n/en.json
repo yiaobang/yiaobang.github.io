@@ -1,6 +1,12 @@
 {
   "title": "Yiaobang's Blog",
   "welcome": "Welcome to my blog! Here I share travel stories, life insights, and interesting experiences.",
+  "hero": {
+    "title": "Hi, I'm Yiaobang",
+    "subtitle": "Recording travel journeys, sharing life moments, exploring the beauty of the world",
+    "learnMore": "Learn More",
+    "explore": "Explore Content"
+  },
 
   "language_selector": "Language",
   "life_categories": "What I Write About",
@@ -83,10 +89,17 @@
   "stat_labels": {
     "exploring": "Exploring",
     "learning": "Learning",
-    "growing": "Growing"
+    "growing": "Growing",
+    "places": "Places",
+    "target": "Target N2",
+    "hobby": "Photography"
   },
   "load_more": "Load More",
   "photos_remaining": "remaining",
   "viewer_hint_title": "💡 Usage Tips",
-  "viewer_hint_text": "← → Navigate | Scroll to zoom | Click image to close | ESC to exit"
+  "viewer_hint_text": "← → Navigate | Scroll to zoom | Click image to close | ESC to exit",
+  "github_projects": "GitHub Projects",
+  "project_description": "A cross-platform serial port debugging tool developed with JavaFX, supporting multi-language interface (Chinese, English, Japanese) and providing rich serial communication features.",
+  "view_on_github": "View on GitHub",
+  "view_details": "View Details"
 }

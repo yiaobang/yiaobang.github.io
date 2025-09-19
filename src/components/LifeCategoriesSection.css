@@ -1,13 +1,12 @@
 .categories-section {
-  margin: 3rem 0;
+  color: white;
 }
 
-.section-title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
+.categories-section .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
   text-align: center;
-  color: white;
   background: linear-gradient(135deg, #fff, #f0f8ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -1,0 +1,185 @@
+.project-detail-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.project-detail-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.back-button {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(52, 152, 219, 0.1);
+}
+
+.back-button:hover {
+  background: rgba(52, 152, 219, 0.2);
+  transform: translateX(-2px);
+}
+
+.project-detail-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.github-button {
+  background: #2c3e50;
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.github-button:hover {
+  background: #34495e;
+  transform: translateY(-2px);
+}
+
+.project-detail-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.readme-content {
+  line-height: 1.7;
+  color: #34495e;
+}
+
+.readme-h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 2rem 0 1.5rem 0;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.readme-h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.readme-h2::before {
+  content: "▶";
+  color: #3498db;
+  font-size: 1rem;
+}
+
+.readme-li {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  list-style: none;
+  position: relative;
+}
+
+.readme-li::before {
+  content: "•";
+  color: #3498db;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.readme-p {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.readme-h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1.5rem 0 0.8rem 0;
+}
+
+.readme-h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #34495e;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.readme-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+  display: block;
+}
+
+.readme-code {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .project-detail-container {
+    padding: 1rem;
+  }
+  
+  .project-detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .project-detail-title {
+    font-size: 1.5rem;
+  }
+  
+  .project-detail-content {
+    padding: 2rem;
+  }
+  
+  .readme-h1 {
+    font-size: 2rem;
+  }
+  
+  .readme-h2 {
+    font-size: 1.5rem;
+  }
+}

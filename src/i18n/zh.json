@@ -1,6 +1,12 @@
 {
   "title": "Yiaobang's Blog",
   "welcome": "欢迎来到我的博客！这里分享我的旅行故事、生活感悟和一些有趣的经历。",
+  "hero": {
+    "title": "你好，我是 Yiaobang",
+    "subtitle": "记录旅行足迹，分享生活点滴，探索世界的美好",
+    "learnMore": "了解更多",
+    "explore": "探索内容"
+  },
 
   "language_selector": "Language",
   "life_categories": "写了什么",
@@ -83,10 +89,17 @@
   "stat_labels": {
     "exploring": "探索中",
     "learning": "学习中",
-    "growing": "成长中"
+    "growing": "成长中",
+    "places": "个地点",
+    "target": "目标 N2",
+    "hobby": "摄影爱好"
   },
   "load_more": "加载更多",
   "photos_remaining": "张剩余",
   "viewer_hint_title": "💡 使用提示",
-  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出"
+  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出",
+  "github_projects": "GitHub 项目",
+  "project_description": "一个基于 JavaFX 开发的跨平台串口调试工具，支持多语言界面（中文、英文、日文），提供丰富的串口通信功能。",
+  "view_on_github": "在 GitHub 上查看",
+  "view_details": "查看详情"
 }

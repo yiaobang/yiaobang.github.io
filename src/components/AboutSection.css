@@ -1,5 +1,16 @@
 .about-section {
-  margin: 3rem 0;
+  color: white;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, #fff, #f0f8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .about-content {
@@ -14,22 +25,23 @@
 }
 
 .about-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.7;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .status-badge {
   display: inline-block;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
+  padding: 1rem 2rem;
+  border-radius: 30px;
   font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
   animation: pulse 2s infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .about-stats {

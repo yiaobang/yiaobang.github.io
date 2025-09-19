@@ -6,6 +6,7 @@ const AboutSection = () => {
 
   return (
     <section className="about-section">
+      <h2 className="section-title">{t('about_title')}</h2>
       <div className="about-content">
         <div className="about-text">
           <p>{t('about_text')}</p>
@@ -15,16 +16,16 @@ const AboutSection = () => {
         </div>
         <div className="about-stats">
           <div className="stat-item">
-            <div className="stat-number">🌍</div>
-            <div className="stat-label">8个地点</div>
+            <div className="stat-number">8</div>
+            <div className="stat-label">{t('stat_labels.places')}</div>
           </div>
           <div className="stat-item">
             <div className="stat-number">🎯</div>
-            <div className="stat-label">目标 N2</div>
+            <div className="stat-label">{t('stat_labels.target')}</div>
           </div>
           <div className="stat-item">
             <div className="stat-number">📸</div>
-            <div className="stat-label">摄影爱好</div>
+            <div className="stat-label">{t('stat_labels.hobby')}</div>
           </div>
           <a 
             href="https://github.com/yiaobang" 
