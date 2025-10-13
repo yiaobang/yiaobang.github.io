@@ -1,127 +1,84 @@
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { marked } from 'marked';
 import './ProjectDetailPage.css';
 
-// 导入README文件
-import readmeZh from '../data/readme-zh.md?raw';
-import readmeEn from '../data/readme-en.md?raw';
-import readmeJa from '../data/readme-ja.md?raw';
-
 const ProjectDetailPage = () => {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-
-  const [readmeContent, setReadmeContent] = useState('');
-  const [readmeTitle, setReadmeTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let content = '';
-    let title = '';
-    
-    switch (i18n.language) {
-      case 'zh':
-        content = readmeZh;
-        title = 'SerialPortToolFX - 串口调试工具';
-        break;
-      case 'ja':
-        content = readmeJa;
-        title = 'SerialPortToolFX - シリアルポートデバッグツール';
-        break;
-      default:
-        content = readmeEn;
-        title = 'SerialPortToolFX - Serial Port Debug Tool';
-        break;
-    }
-    
-    setReadmeContent(content);
-    setReadmeTitle(title);
+    const loadReadme = async () => {
+      setLoading(true);
+      try {
+        const lang = i18n.language;
+        let filename = 'readme-en.md';
+        
+        if (lang === 'zh') filename = 'readme-zh.md';
+        else if (lang === 'ja') filename = 'readme-ja.md';
+        
+        const response = await fetch(`/src/data/${filename}`);
+        const text = await response.text();
+        setContent(text);
+      } catch (error) {
+        console.error('Error loading readme:', error);
+        setContent('# SerialPortToolFX\n\n项目详情加载失败，请访问 GitHub 查看完整信息。');
+      }
+      setLoading(false);
+    };
+
+    loadReadme();
   }, [i18n.language]);
 
-  const renderMarkdown = (content: string) => {
-    return content.split('\n').map((line, index) => {
-      if (line.startsWith('# ')) {
-        return <h1 key={index} className="readme-h1">{line.substring(2)}</h1>;
-      } else if (line.startsWith('## ')) {
-        return <h2 key={index} className="readme-h2">{line.substring(3)}</h2>;
-      } else if (line.startsWith('### ')) {
-        return <h3 key={index} className="readme-h3">{line.substring(4)}</h3>;
-      } else if (line.startsWith('#### ')) {
-        return <h4 key={index} className="readme-h4">{line.substring(5)}</h4>;
-      } else if (line.startsWith('- ')) {
-        return <li key={index} className="readme-li">{line.substring(2)}</li>;
-      } else if (line.startsWith('```')) {
-        return <pre key={index} className="readme-code"><code>{line}</code></pre>;
-      } else if (line.includes('![')) {
-        // 处理图片
-        const imgRegex = /!\[([^\]]*)\]\(([^\)]+)\)/g;
-        const parts = [];
-        let lastIndex = 0;
-        let match;
-        
-        while ((match = imgRegex.exec(line)) !== null) {
-          // 添加图片前的文本
-          if (match.index > lastIndex) {
-            parts.push(line.substring(lastIndex, match.index));
-          }
-          
-          // 添加图片
-          const alt = match[1];
-          const src = match[2];
-          // 将相对路径转换为绝对路径
-          const imageSrc = src.startsWith('http') ? src : `/images/serialport/${src}`;
-          parts.push(
-            <img 
-              key={`img-${index}-${match.index}`} 
-              src={imageSrc} 
-              alt={alt} 
-              className="readme-img"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
-            />
-          );
-          
-          lastIndex = match.index + match[0].length;
-        }
-        
-        // 添加剩余文本
-        if (lastIndex < line.length) {
-          parts.push(line.substring(lastIndex));
-        }
-        
-        return <p key={index} className="readme-p">{parts}</p>;
-      } else if (line.trim() === '') {
-        return <br key={index} />;
-      } else {
-        return <p key={index} className="readme-p">{line}</p>;
-      }
+  useEffect(() => {
+    marked.setOptions({
+      breaks: true,
+      gfm: true
     });
+    
+    const renderer = new marked.Renderer();
+    renderer.image = (href, title, text) => {
+      return `<img src="/serialport/${href}" alt="${text}" title="${title || ''}" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />`;
+    };
+    
+    marked.setOptions({ renderer });
+  }, []);
+
+  const formatMarkdown = (text: string) => {
+    return marked(text) as string;
   };
 
   return (
-    <div className="project-detail-container">
-      <div className="project-detail-header">
-        <Link to="/" className="back-button">
-           {t('back_to_home')}
-        </Link>
-        <h1 className="project-detail-title">{readmeTitle}</h1>
-        <div className="project-links">
+    <div className="project-detail-page">
+      <div className="project-header">
+        <button className="back-button" onClick={() => navigate('/')}>
+          {t('back_to_home')}
+        </button>
+        <h1 className="project-title">SerialPortToolFX</h1>
+        <div className="project-actions">
           <a 
             href="https://github.com/yiaobang/SerialPortToolFX" 
             target="_blank" 
             rel="noopener noreferrer"
             className="github-button"
           >
-            {t('view_on_github')} →
+            {t('view_github')} →
           </a>
         </div>
       </div>
-      
-      <div className="project-detail-content">
-        <div className="readme-content">
-          {renderMarkdown(readmeContent)}
-        </div>
+
+      <div className="project-content">
+        {loading ? (
+          <div className="loading">加载中...</div>
+        ) : (
+          <div 
+            className="markdown-content"
+            dangerouslySetInnerHTML={{ __html: formatMarkdown(content) as string }}
+          />
+        )}
       </div>
     </div>
   );

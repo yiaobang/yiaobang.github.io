@@ -1,26 +1,22 @@
 {
-  "title": "Yiaobang's Blog",
-  "welcome": "欢迎来到我的博客！这里分享我的旅行故事、生活感悟和一些有趣的经历。",
-  "hero": {
-    "title": "你好，我是 Yiaobang",
-    "subtitle": "记录旅行足迹，分享生活点滴，探索世界的美好",
-    "learnMore": "了解更多",
-    "explore": "探索内容"
+  "profile": {
+    "name": "Y",
+    "intro": "你好！我是一个热爱旅行和摄影的人，目前在日本生活。喜欢用镜头记录生活中的美好瞬间，分享旅行中的见闻和感悟。"
   },
-
-  "language_selector": "Language",
-  "life_categories": "写了什么",
   "categories": {
-    "travel": "旅游篇",
-    "cooking": "料理篇",
-    "study": "学习篇",
-    "daily": "日常篇"
+    "travel": "我的旅行"
   },
-  "about_title": "关于我",
-  "about_text": "喜欢旅行和尝试新事物。在这个博客里记录旅行的点滴、日常的想法和一些有意思的事情。",
-  "current_status": "当前状态：努力学习日语中 📚",
-  "back_to_timeline": "← 返回时间轴",
+  "travel_description": "在这里分享我的旅行足迹和摄影作品。",
+  "view_travel": "查看旅行记录",
+  "project_title": "我的项目",
+  "project_description": "一个功能完善的跨平台串口调试工具，支持多语言界面。",
+  "feature_1": "跨平台兼容（Windows/macOS/Linux）",
+  "feature_2": "多语言界面（中文/英文/日文）",
+  "feature_3": "丰富的串口通信功能",
+  "view_github": "查看GitHub",
+  "view_details": "查看详情",
   "back_to_home": "← 返回主页",
+  "back_to_timeline": "← 返回时间轴",
   "photo_gallery": "📸 照片集",
   "photos_count": "张照片",
   "loading_photos": "加载照片中...",
@@ -78,28 +74,8 @@
       "short_description": "日本最高楼，俯瞰城市美景"
     }
   },
-  "category_descriptions": {
-    "travel": "探索新的地方和文化",
-    "cooking": "尝试当地美食和食谱",
-    "study": "学术生活和学习经历",
-    "daily": "日常生活的瞬间和发现"
-  },
-  "view_arrow": "查看 →",
-  "coming_soon": "即将推出...",
-  "stat_labels": {
-    "exploring": "探索中",
-    "learning": "学习中",
-    "growing": "成长中",
-    "places": "个地点",
-    "target": "目标 N2",
-    "hobby": "摄影爱好"
-  },
   "load_more": "加载更多",
   "photos_remaining": "张剩余",
   "viewer_hint_title": "💡 使用提示",
-  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出",
-  "github_projects": "GitHub 项目",
-  "project_description": "一个基于 JavaFX 开发的跨平台串口调试工具，支持多语言界面（中文、英文、日文），提供丰富的串口通信功能。",
-  "view_on_github": "在 GitHub 上查看",
-  "view_details": "查看详情"
+  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出"
 }

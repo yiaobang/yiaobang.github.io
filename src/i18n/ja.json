@@ -1,26 +1,22 @@
 {
-  "title": "Yiaobang's Blog",
-  "welcome": "私のブログへようこそ！旅行の物語、生活の気づき、面白い体験をシェアしています。",
-  "hero": {
-    "title": "こんにちは、Yiaobangです",
-    "subtitle": "旅行の記録、日常のシェア、世界の美しさを探求",
-    "learnMore": "もっと知る",
-    "explore": "コンテンツを探す"
+  "profile": {
+    "name": "Y",
+    "intro": "こんにちは！旅行と写真が大好きで、現在日本で生活しています。レンズを通して美しい瞬間を捉え、旅行の体験や感想をシェアすることが好きです。"
   },
-
-  "language_selector": "Language",
-  "life_categories": "書いていること",
   "categories": {
-    "travel": "旅行編",
-    "cooking": "料理編",
-    "study": "勉強編",
-    "daily": "日常編"
+    "travel": "私の旅行"
   },
-  "about_title": "私について",
-  "about_text": "旅行や新しい体験が大好きです。このブログでは旅行の記録、日常の感想、面白かったことなどを書いています。",
-  "current_status": "現在の状況：日本語勉強中 📚",
-  "back_to_timeline": "← タイムラインに戻る",
+  "travel_description": "ここでは私の旅行の足跡と写真作品をシェアしています。",
+  "view_travel": "旅行記録を見る",
+  "project_title": "私のプロジェクト",
+  "project_description": "多言語対応の機能豊富なクロスプラットフォームシリアルポートデバッグツール。",
+  "feature_1": "クロスプラットフォーム対応（Windows/macOS/Linux）",
+  "feature_2": "多言語インターフェース（中文/英語/日本語）",
+  "feature_3": "豊富なシリアル通信機能",
+  "view_github": "GitHubを見る",
+  "view_details": "詳細を見る",
   "back_to_home": "← ホームに戻る",
+  "back_to_timeline": "← タイムラインに戻る",
   "photo_gallery": "📸 フォトギャラリー",
   "photos_count": "枚の写真",
   "loading_photos": "写真を読み込み中...",
@@ -78,28 +74,8 @@
       "short_description": "日本一高いビルからの絶景"
     }
   },
-  "category_descriptions": {
-    "travel": "新しい場所や文化を探索",
-    "cooking": "地元の料理やレシピを試す",
-    "study": "学術生活と学習経験",
-    "daily": "日常の瞬間と発見"
-  },
-  "view_arrow": "表示 →",
-  "coming_soon": "近日公開...",
-  "stat_labels": {
-    "exploring": "探索中",
-    "learning": "学習中",
-    "growing": "成長中",
-    "places": "か所",
-    "target": "目標 N2",
-    "hobby": "写真好き"
-  },
   "load_more": "もっと読み込む",
   "photos_remaining": "枚残っています",
   "viewer_hint_title": "💡 使い方",
-  "viewer_hint_text": "← → キーでナビゲーション | スクロールでズーム | 画像クリックで閉じる | ESCで終了",
-  "github_projects": "GitHub プロジェクト",
-  "project_description": "JavaFXで開発したクロスプラットフォームシリアルポートデバッグツール。多言語インターフェース（中文、英語、日本語）に対応し、豊富なシリアル通信機能を提供します。",
-  "view_on_github": "GitHub で見る",
-  "view_details": "詳細を見る"
+  "viewer_hint_text": "← → キーでナビゲーション | スクロールでズーム | 画像クリックで閉じる | ESCで終了"
 }

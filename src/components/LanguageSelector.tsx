@@ -14,7 +14,7 @@ const LanguageSelector = () => {
   return (
     <div className="language-selector">
       <div className="language-hint">
-        🌐 {t('language_selector')}
+        🌐 Language
       </div>
       <select onChange={handleLanguageChange} value={currentLang}>
         <option value="zh">中文</option>

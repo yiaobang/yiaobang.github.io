@@ -7,7 +7,7 @@
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 8px 12px;
   backdrop-filter: blur(10px);
   gap: 8px;
@@ -35,26 +35,23 @@
 }
 
 .language-selector select:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
+  color: #667eea;
 }
 
 .language-selector select option {
-  background: rgba(30, 30, 30, 0.9);
+  background: #333;
   color: white;
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
   .language-selector {
     top: 15px;
     right: 15px;
     padding: 6px 10px;
-    border-radius: 10px;
   }
   
   .language-hint {
-    display: none; /* Hide hint text on mobile */
+    display: none;
   }
   
   .language-selector select {
@@ -67,12 +64,9 @@
     top: 10px;
     right: 10px;
     padding: 5px 8px;
-    border-radius: 8px;
-    min-width: auto;
   }
   
   .language-selector select {
     font-size: 12px;
-    padding: 2px;
   }
 }
