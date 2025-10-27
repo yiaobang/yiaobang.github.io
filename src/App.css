@@ -22,128 +22,16 @@
   align-items: center;
 }
 
-/* Profile Section */
-.profile-section {
-  text-align: center;
-}
 
-.profile-avatar {
-  width: 210px;
-  height: 210px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #667eea;
-  margin-bottom: 1.5rem;
-}
-
-.profile-name {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 1.2rem;
-}
-
-.profile-intro {
-  font-size: 1.2rem;
-  color: #ccc;
-  line-height: 1.6;
-}
 
 /* Content Section */
 .content-section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-.content-item {
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-}
 
-.content-item:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(102, 126, 234, 0.3);
-  transform: translateY(-2px);
-}
-
-.item-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.item-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0.8rem;
-  text-align: center;
-}
-
-.item-description {
-  font-size: 0.95rem;
-  color: #ccc;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.project-details {
-  margin-bottom: 1.5rem;
-}
-
-.tech-stack {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.tech-tag {
-  background: rgba(102, 126, 234, 0.2);
-  color: #a5b4fc;
-  padding: 0.3rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border: 1px solid rgba(102, 126, 234, 0.3);
-}
-
-.project-features {
-  text-align: left;
-  max-width: 280px;
-  margin: 0 auto;
-}
-
-.feature {
-  font-size: 0.85rem;
-  color: #bbb;
-  margin-bottom: 0.4rem;
-  line-height: 1.4;
-}
-
-.item-button {
-  display: inline-block;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-}
-
-.item-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-}
 
 @media (max-width: 768px) {
   .content-wrapper {

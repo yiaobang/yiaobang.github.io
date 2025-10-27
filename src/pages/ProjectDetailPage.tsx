@@ -20,7 +20,7 @@ const ProjectDetailPage = () => {
         if (lang === 'zh') filename = 'readme-zh.md';
         else if (lang === 'ja') filename = 'readme-ja.md';
         
-        const response = await fetch(`/src/data/${filename}`);
+        const response = await fetch(`/project/serialportFX/${filename}`);
         const text = await response.text();
         setContent(text);
       } catch (error) {
@@ -33,22 +33,18 @@ const ProjectDetailPage = () => {
     loadReadme();
   }, [i18n.language]);
 
-  useEffect(() => {
-    marked.setOptions({
-      breaks: true,
-      gfm: true
-    });
-    
-    const renderer = new marked.Renderer();
-    renderer.image = (href, title, text) => {
-      return `<img src="/serialport/${href}" alt="${text}" title="${title || ''}" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />`;
-    };
-    
-    marked.setOptions({ renderer });
-  }, []);
+
 
   const formatMarkdown = (text: string) => {
-    return marked(text) as string;
+    // 先处理图片
+    const textWithImages = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+      return `<img src="/project/serialportFX/${src}" alt="${alt}" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />`;
+    });
+    
+    return marked(textWithImages, {
+      breaks: true,
+      gfm: true
+    }) as string;
   };
 
   return (

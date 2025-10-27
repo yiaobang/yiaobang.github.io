@@ -16,14 +16,14 @@ const TravelPage = () => {
   }, []);
 
   const travelData = [
-    { id: 8, date: '2025-05', image: '🏢', folder: '8.ハルカス', photoCount: 6 },
-    { id: 7, date: '2025-04', image: '🌸', folder: '7.お花見', photoCount: 15 },
-    { id: 6, date: '2024-12', image: '🌃', folder: '6.夜景', photoCount: 1 },
-    { id: 5, date: '2024-09', image: '⛰️', folder: '5.奈良金刚山', photoCount: 16 },
-    { id: 4, date: '2024-09', image: '🌅', folder: '4.某个午后', photoCount: 2 },
-    { id: 3, date: '2024-08', image: '🚴', folder: '3.自転車博物館', photoCount: 8 },
-    { id: 2, date: '2024-08', image: '🌲', folder: '2.生駒山', photoCount: 12 },
-    { id: 1, date: '2024-07', image: '🌊', folder: '1.しまなみ海道', photoCount: 18 }
+    { id: 8, date: '2025-05-06', image: '🏢', folder: '8.ハルカス', photoCount: 6 },
+    { id: 7, date: '2025-04-06', image: '🌸', folder: '7.お花見', photoCount: 15 },
+    { id: 6, date: '2024-12-20', image: '🌃', folder: '6.夜景', photoCount: 1 },
+    { id: 5, date: '2024-09-16', image: '⛰️', folder: '5.奈良金剛山', photoCount: 16 },
+    { id: 4, date: '2024-09-04', image: '🌅', folder: '4.某个午后', photoCount: 2 },
+    { id: 3, date: '2024-08-16', image: '🚴', folder: '3.自転車博物館', photoCount: 8 },
+    { id: 2, date: '2024-08-11', image: '🌲', folder: '2.生駒山', photoCount: 12 },
+    { id: 1, date: '2024-07-29', image: '🌊', folder: '1.しまなみ海道', photoCount: 18 }
   ];
 
   const handleTripClick = (tripId: number) => {
@@ -46,11 +46,12 @@ const TravelPage = () => {
             <div 
               key={trip.id} 
               className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+              data-date={trip.date}
               onClick={() => handleTripClick(trip.id)}
             >
               <div className="timeline-content">
                 <div className="trip-icon">{trip.image}</div>
-                <div className="trip-date">{trip.date}</div>
+                <div className="trip-date-mobile">{trip.date}</div>
                 <h3 className="trip-location">
                   {t(`travel_data.${trip.id}.location`)}
                 </h3>

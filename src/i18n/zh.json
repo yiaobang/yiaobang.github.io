@@ -6,13 +6,14 @@
   "categories": {
     "travel": "我的旅行"
   },
-  "travel_description": "在这里分享我的旅行足迹和摄影作品。",
+  "travel_description": "探索日本的美景，记录旅行中的精彩瞬间。",
+  "travel_places": "个地点",
+  "photography": "摄影爱好",
+  "learning_jp": "学习日语",
   "view_travel": "查看旅行记录",
   "project_title": "我的项目",
-  "project_description": "一个功能完善的跨平台串口调试工具，支持多语言界面。",
-  "feature_1": "跨平台兼容（Windows/macOS/Linux）",
-  "feature_2": "多语言界面（中文/英文/日文）",
-  "feature_3": "丰富的串口通信功能",
+  "project_description": "展示我的开发项目，包括工具应用、网站开发等作品。",
+
   "view_github": "查看GitHub",
   "view_details": "查看详情",
   "back_to_home": "← 返回主页",
@@ -27,7 +28,7 @@
   "travel_data": {
     "1": {
       "location": "岛波海道",
-      "date": "2024-07-29~30",
+      "date": "2024-07-29",
       "description": "连接岛屿的绝美骑行路线，海景和大桥令人震撼！",
       "short_description": "连接岛屿的骑行路线"
     },
