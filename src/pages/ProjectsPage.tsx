@@ -8,18 +8,18 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: 'serial-tool',
-      title: 'SerialPortToolFX',
-      description: '一个功能完善的跨平台串口调试工具，支持多语言界面。',
+      titleKey: 'project_serial_tool_title',
+      descKey: 'project_serial_tool_desc',
       tech: ['JavaFX', 'Java', 'i18n'],
-      status: '已完成',
+      statusKey: 'status_completed',
       github: 'https://github.com/yiaobang/SerialPortTool'
     },
     {
       id: 'personal-website',
-      title: '个人网站',
-      description: '基于React的响应式个人网站，展示旅行摄影和项目作品。',
+      titleKey: 'project_website_title',
+      descKey: 'project_website_desc',
       tech: ['React', 'TypeScript', 'CSS'],
-      status: '进行中',
+      statusKey: 'status_in_progress',
       github: 'https://github.com/yiaobang/yiaobang.github.io'
     }
   ];
@@ -31,21 +31,24 @@ const ProjectsPage = () => {
           <Link to="/" className="back-link">
             {t('back_to_home')}
           </Link>
-          <h1 className="projects-title">💻 我的项目</h1>
-          <p className="projects-subtitle">开发项目展示</p>
+          <h1 className="projects-title">
+            <span className="emoji">💻 </span>
+            <span className="text">{t('projects_page_title').replace('💻 ', '')}</span>
+          </h1>
+          <p className="projects-subtitle">{t('projects_subtitle')}</p>
         </div>
 
         <div className="projects-grid">
           {projects.map((project) => (
             <div key={project.id} className="project-card">
               <div className="project-header">
-                <h3 className="project-name">{project.title}</h3>
-                <span className={`project-status ${project.status === '已完成' ? 'completed' : 'in-progress'}`}>
-                  {project.status}
+                <h3 className="project-name">{t(project.titleKey)}</h3>
+                <span className={`project-status ${project.statusKey === 'status_completed' ? 'completed' : 'in-progress'}`}>
+                  {t(project.statusKey)}
                 </span>
               </div>
               
-              <p className="project-desc">{project.description}</p>
+              <p className="project-desc">{t(project.descKey)}</p>
               
               <div className="project-tech">
                 {project.tech.map((tech) => (

@@ -6,7 +6,8 @@
 .profile-card {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+  background-clip: padding-box;
   padding: 3rem 2.5rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -21,8 +22,27 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+  bottom: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(45deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #f5576c 75%, 
+    #4facfe 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 4s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .profile-card:hover {
@@ -33,15 +53,16 @@
 }
 
 .profile-avatar {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #667eea;
   margin-bottom: 1.5rem;
-  box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
   transition: all 0.3s ease;
 }
+
+
 
 .profile-avatar:hover {
   transform: scale(1.05);
