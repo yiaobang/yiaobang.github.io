@@ -1,0 +1,178 @@
+[
+  {
+    "id": "1",
+    "folder": "1.しまなみ海道",
+    "zh": {
+      "location": "岛波海道",
+      "date": "2024-07-29",
+      "description": "连接岛屿的绝美骑行路线，海景和大桥令人震撼！",
+      "short_description": "连接岛屿的骑行路线"
+    },
+    "en": {
+      "location": "Shimanami Kaido",
+      "date": "2024-07-29",
+      "description": "Amazing cycling route connecting islands, stunning ocean views and bridges!",
+      "short_description": "Cycling route connecting islands"
+    },
+    "ja": {
+      "location": "しまなみ海道",
+      "date": "2024-07-29",
+      "description": "島々を繋ぐ絶美のサイクリングルート、海景と大橋が震撼的！",
+      "short_description": "島々を繋ぐサイクリングルート"
+    }
+  },
+  {
+    "id": "2",
+    "folder": "2.生驹山",
+    "zh": {
+      "location": "生驹山",
+      "date": "2024-08-11",
+      "description": "美丽的山景和宁静的自然漫步，全景令人难忘。",
+      "short_description": "山景与自然"
+    },
+    "en": {
+      "location": "Mount Ikoma",
+      "date": "2024-08-11",
+      "description": "Beautiful mountain scenery and peaceful nature walks, unforgettable panoramic views.",
+      "short_description": "Mountain scenery and nature"
+    },
+    "ja": {
+      "location": "生駒山",
+      "date": "2024-08-11",
+      "description": "美しい山景と静かな自然散歩、全景が忘れられない。",
+      "short_description": "山景と自然"
+    }
+  },
+  {
+    "id": "3",
+    "folder": "3.自転車博物館",
+    "zh": {
+      "location": "自行车博物馆",
+      "date": "2024-08-16",
+      "description": "迷人的自行车历史和骑行文化探索之旅。",
+      "short_description": "探索自行车历史文化"
+    },
+    "en": {
+      "location": "Bicycle Museum",
+      "date": "2024-08-16",
+      "description": "Fascinating bicycle history and cycling culture exploration journey.",
+      "short_description": "Exploring bicycle history and culture"
+    },
+    "ja": {
+      "location": "自転車博物館",
+      "date": "2024-08-16",
+      "description": "魅力的な自転車の歴史とサイクリング文化探索の旅。",
+      "short_description": "自転車の歴史文化を探索"
+    }
+  },
+  {
+    "id": "4",
+    "folder": "4.某个午后",
+    "zh": {
+      "location": "某个午后",
+      "date": "2024-09-04",
+      "description": "被定格的宁静时光，日常生活中的简单美好。",
+      "short_description": "宁静的时光"
+    },
+    "en": {
+      "location": "A Certain Afternoon",
+      "date": "2024-09-04",
+      "description": "Quiet time captured in a moment, simple beauty of everyday life.",
+      "short_description": "Quiet time"
+    },
+    "ja": {
+      "location": "ある午後",
+      "date": "2024-09-04",
+      "description": "定格された静かな時光、日常生活の中の簡単な美しさ。",
+      "short_description": "静かな時光"
+    }
+  },
+  {
+    "id": "5",
+    "folder": "5.奈良金刚山",
+    "zh": {
+      "location": "奈良金刚山",
+      "date": "2024-09-16",
+      "description": "具有挑战性的登山之旅，收获美景与自然沉浸。",
+      "short_description": "登山冒险之旅"
+    },
+    "en": {
+      "location": "Mount Kongo, Nara",
+      "date": "2024-09-16",
+      "description": "Challenging mountain climbing journey, rewarding beautiful scenery and nature immersion.",
+      "short_description": "Mountain climbing adventure"
+    },
+    "ja": {
+      "location": "奈良金剛山",
+      "date": "2024-09-16",
+      "description": "挑戦的な登山の旅、美景と自然沈浸を収穫。",
+      "short_description": "登山冒険の旅"
+    }
+  },
+  {
+    "id": "6",
+    "folder": "6.夜景",
+    "zh": {
+      "location": "夜景",
+      "date": "2024-12-20",
+      "description": "迷人的城市灯光和神奇的夜晚氛围。",
+      "short_description": "迷人的城市夜景"
+    },
+    "en": {
+      "location": "Night Views",
+      "date": "2024-12-20",
+      "description": "Charming city lights and magical night atmosphere.",
+      "short_description": "Charming city night views"
+    },
+    "ja": {
+      "location": "夜景",
+      "date": "2024-12-20",
+      "description": "魅力的な都市の灯りと神奇な夜の雰囲気。",
+      "short_description": "魅力的な都市夜景"
+    }
+  },
+  {
+    "id": "7",
+    "folder": "7.お花見",
+    "zh": {
+      "location": "赏樱",
+      "date": "2025-04-06",
+      "description": "樱花盛开的美丽季节，春天最美的时刻！",
+      "short_description": "樱花盛开的美丽季节"
+    },
+    "en": {
+      "location": "Cherry Blossom Viewing",
+      "date": "2025-04-06",
+      "description": "Beautiful season of cherry blossoms in full bloom, the most beautiful moment of spring!",
+      "short_description": "Beautiful season of cherry blossoms in full bloom"
+    },
+    "ja": {
+      "location": "お花見",
+      "date": "2025-04-06",
+      "description": "桜満開の美しい季節、春の最も美しい時刻！",
+      "short_description": "桜満開の美しい季節"
+    }
+  },
+  {
+    "id": "8",
+    "folder": "8.ハルカス",
+    "zh": {
+      "location": "大阪阿倍野哈鲁卡斯",
+      "date": "2025-05-06",
+      "description": "从日本最高楼俯瞰的惊人景色，令人屏息的城市景观！",
+      "short_description": "日本最高楼，俯瞰城市美景"
+    },
+    "en": {
+      "location": "Abeno Harukas, Osaka",
+      "date": "2025-05-06",
+      "description": "Amazing views overlooking from Japan's tallest building, breathtaking cityscape!",
+      "short_description": "Japan's tallest building, overlooking beautiful city views"
+    },
+    "ja": {
+      "location": "あべのハルカス、大阪",
+      "date": "2025-05-06",
+      "description": "日本最高層ビルから俯瞰する驚きの景色、息を呑む都市景観！",
+      "short_description": "日本最高層ビル、都市美景を俯瞰"
+    }
+  }
+]
