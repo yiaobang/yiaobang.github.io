@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "name": "Y",
+    "intro": "Hello! I'm a travel and photography enthusiast currently living in Japan. I love capturing beautiful moments through my lens and sharing travel experiences and insights."
+  },
+  "categories": {
+    "travel": "My Travels"
+  },
+  "travel_description": "Explore the beautiful scenery of Japan and record wonderful moments during travel.",
+  "travel_places": "Places",
+  "photography": "Photography",
+  "learning_jp": "Learning JP",
+  "view_travel": "View Travel Records",
+  "project_title": "My Projects",
+  "project_description": "Showcase of my development projects, including tool applications, web development and other works.",
+  "view_github": "View GitHub",
+  "view_details": "View Details",
+  "back_to_home": "← Back to Home",
+  "back_to_timeline": "← Back to Timeline",
+  "photo_gallery": "📸 Photo Gallery",
+  "photos_count": "photos",
+  "loading_photos": "Loading photos...",
+  "view_full_size": "📷 View Full Size",
+  "travel_story": "✨ Travel Story",
+  "view_photos": "📸 View Photos",
+  "trip_not_found": "Trip not found",
+  "load_more": "Load More",
+  "photos_remaining": "remaining",
+  "viewer_hint_title": "💡 Usage Tips",
+  "viewer_hint_text": "← → Navigate | Scroll to zoom | Click image to close | ESC to exit",
+  "projects_page_title": "My Projects",
+  "projects_subtitle": "Development Projects Showcase",
+  "project_serial_tool_title": "SerialPortToolFX",
+  "project_serial_tool_desc": "A feature-rich cross-platform serial port debugging tool with multi-language support.",
+  "project_website_title": "Personal Website",
+  "project_website_desc": "A responsive personal website built with React, showcasing travel photography and project works.",
+  "status_completed": "Completed",
+  "status_in_progress": "In Progress"
+}

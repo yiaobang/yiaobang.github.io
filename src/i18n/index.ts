@@ -1,11 +1,13 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { translations } from './translations';
+import zh from './locales/zh.json';
+import en from './locales/en.json';
+import ja from './locales/ja.json';
 
 const resources = {
-  zh: { translation: translations.zh },
-  en: { translation: translations.en },
-  ja: { translation: translations.ja }
+  zh: { translation: zh },
+  en: { translation: en },
+  ja: { translation: ja }
 };
 
 const getBrowserLanguage = () => {

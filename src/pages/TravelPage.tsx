@@ -1,11 +1,35 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './TravelPage.css';
 
+interface TravelItem {
+  id: string;
+  folder: string;
+  zh: { location: string; date: string; description: string; short_description: string };
+  en: { location: string; date: string; description: string; short_description: string };
+  ja: { location: string; date: string; description: string; short_description: string };
+}
+
 const TravelPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const [travels, setTravels] = useState<TravelItem[]>([]);
+  const [photoCount, setPhotoCount] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    Promise.all([
+      fetch('/data/travels.json').then(res => res.json()),
+      fetch('/data/photos.json').then(res => res.json())
+    ]).then(([travelsData, photosData]) => {
+      setTravels(travelsData.reverse());
+      const counts: Record<string, number> = {};
+      Object.keys(photosData).forEach(id => {
+        counts[id] = photosData[id].length;
+      });
+      setPhotoCount(counts);
+    });
+  }, []);
 
   useEffect(() => {
     const savedScrollY = sessionStorage.getItem('travelPageScrollY');
@@ -15,20 +39,21 @@ const TravelPage = () => {
     }
   }, []);
 
-  const travelData = [
-    { id: 8, date: '2025-05-06', image: '🏢', folder: '8.ハルカス', photoCount: 6 },
-    { id: 7, date: '2025-04-06', image: '🌸', folder: '7.お花見', photoCount: 15 },
-    { id: 6, date: '2024-12-20', image: '🌃', folder: '6.夜景', photoCount: 1 },
-    { id: 5, date: '2024-09-16', image: '⛰️', folder: '5.奈良金剛山', photoCount: 16 },
-    { id: 4, date: '2024-09-04', image: '🌅', folder: '4.某个午后', photoCount: 2 },
-    { id: 3, date: '2024-08-16', image: '🚴', folder: '3.自転車博物館', photoCount: 8 },
-    { id: 2, date: '2024-08-11', image: '🌲', folder: '2.生駒山', photoCount: 12 },
-    { id: 1, date: '2024-07-29', image: '🌊', folder: '1.しまなみ海道', photoCount: 18 }
-  ];
-
-  const handleTripClick = (tripId: number) => {
+  const handleTripClick = (tripId: string) => {
     sessionStorage.setItem('travelPageScrollY', window.scrollY.toString());
     navigate(`/travel/${tripId}`);
+  };
+
+  const getEmoji = (folder: string) => {
+    if (folder.includes('ハルカス')) return '🏢';
+    if (folder.includes('花見')) return '🌸';
+    if (folder.includes('夜景')) return '🌃';
+    if (folder.includes('金剛山')) return '⛰️';
+    if (folder.includes('午後')) return '🌅';
+    if (folder.includes('博物館')) return '🚴';
+    if (folder.includes('生駒山')) return '🌲';
+    if (folder.includes('海道')) return '🌊';
+    return '📸';
   };
 
   return (
@@ -42,29 +67,29 @@ const TravelPage = () => {
 
       <div className="timeline-container">
         <div className="timeline">
-          {travelData.map((trip, index) => (
-            <div 
-              key={trip.id} 
-              className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-              data-date={trip.date}
-              onClick={() => handleTripClick(trip.id)}
-            >
-              <div className="timeline-content">
-                <div className="trip-icon">{trip.image}</div>
-                <div className="trip-date-mobile">{trip.date}</div>
-                <h3 className="trip-location">
-                  {t(`travel_data.${trip.id}.location`)}
-                </h3>
-                <p className="trip-description">
-                  {t(`travel_data.${trip.id}.short_description`)}
-                </p>
-                <div className="photo-count">
-                  {trip.photoCount} {t('photos_count')}
+          {travels.map((trip, index) => {
+            const lang = i18n.language as 'zh' | 'en' | 'ja';
+            const tripData = trip[lang];
+            return (
+              <div 
+                key={trip.id} 
+                className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+                data-date={tripData.date}
+                onClick={() => handleTripClick(trip.id)}
+              >
+                <div className="timeline-content">
+                  <div className="trip-icon">{getEmoji(trip.folder)}</div>
+                  <div className="trip-date-mobile">{tripData.date}</div>
+                  <h3 className="trip-location">{tripData.location}</h3>
+                  <p className="trip-description">{tripData.short_description}</p>
+                  <div className="photo-count">
+                    {photoCount[trip.id] || 0} {t('photos_count')}
+                  </div>
+                  <div className="view-photos">{t('view_photos')}</div>
                 </div>
-                <div className="view-photos">{t('view_photos')}</div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

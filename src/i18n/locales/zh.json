@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "name": "Y",
+    "intro": "你好！我是一个热爱旅行和摄影的人，目前在日本生活。喜欢用镜头记录生活中的美好瞬间，分享旅行中的见闻和感悟。"
+  },
+  "categories": {
+    "travel": "我的旅行"
+  },
+  "travel_description": "探索日本的美景，记录旅行中的精彩瞬间。",
+  "travel_places": "个地点",
+  "photography": "摄影爱好",
+  "learning_jp": "学习日语",
+  "view_travel": "查看旅行记录",
+  "project_title": "我的项目",
+  "project_description": "展示我的开发项目，包括工具应用、网站开发等作品。",
+  "view_github": "查看GitHub",
+  "view_details": "查看详情",
+  "back_to_home": "← 返回主页",
+  "back_to_timeline": "← 返回时间轴",
+  "photo_gallery": "📸 照片集",
+  "photos_count": "张照片",
+  "loading_photos": "加载照片中...",
+  "view_full_size": "📷 查看大图",
+  "travel_story": "✨ 旅行故事",
+  "view_photos": "📸 查看照片",
+  "trip_not_found": "未找到此行程",
+  "load_more": "加载更多",
+  "photos_remaining": "张剩余",
+  "viewer_hint_title": "💡 使用提示",
+  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出",
+  "projects_page_title": "我的项目",
+  "projects_subtitle": "开发项目展示",
+  "project_serial_tool_title": "SerialPortToolFX",
+  "project_serial_tool_desc": "一个功能完善的跨平台串口调试工具，支持多语言界面。",
+  "project_website_title": "个人网站",
+  "project_website_desc": "基于React的响应式个人网站，展示旅行摄影和项目作品。",
+  "status_completed": "已完成",
+  "status_in_progress": "进行中"
+}

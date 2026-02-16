@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "name": "Y",
+    "intro": "こんにちは！旅行と写真が大好きで、現在日本で生活しています。レンズを通して美しい瞬間を捉え、旅行の体験や感想をシェアすることが好きです。"
+  },
+  "categories": {
+    "travel": "私の旅行"
+  },
+  "travel_description": "日本の美景を探索し、旅行中の素晴らしい瞬間を記録します。",
+  "travel_places": "か所",
+  "photography": "写真好き",
+  "learning_jp": "日本語学習",
+  "view_travel": "旅行記録を見る",
+  "project_title": "私のプロジェクト",
+  "project_description": "ツールアプリケーション、ウェブ開発などの作品を含む、私の開発プロジェクトを紹介します。",
+  "view_github": "GitHubを見る",
+  "view_details": "詳細を見る",
+  "back_to_home": "← ホームに戻る",
+  "back_to_timeline": "← タイムラインに戻る",
+  "photo_gallery": "📸 フォトギャラリー",
+  "photos_count": "枚の写真",
+  "loading_photos": "写真を読み込み中...",
+  "view_full_size": "📷 大きなサイズで表示",
+  "travel_story": "✨ 旅行の思い出",
+  "view_photos": "📸 写真を見る",
+  "trip_not_found": "旅行が見つかりません",
+  "load_more": "もっと読み込む",
+  "photos_remaining": "枚残っています",
+  "viewer_hint_title": "💡 使い方",
+  "viewer_hint_text": "← → キーでナビゲーション | スクロールでズーム | 画像クリックで閉じる | ESCで終了",
+  "projects_page_title": "私のプロジェクト",
+  "projects_subtitle": "開発プロジェクトの紹介",
+  "project_serial_tool_title": "SerialPortToolFX",
+  "project_serial_tool_desc": "多言語対応の機能豊富なクロスプラットフォームシリアルポートデバッグツール。",
+  "project_website_title": "個人ウェブサイト",
+  "project_website_desc": "Reactベースのレスポンシブ個人ウェブサイト、旅行写真とプロジェクト作品を展示。",
+  "status_completed": "完成",
+  "status_in_progress": "進行中"
+}

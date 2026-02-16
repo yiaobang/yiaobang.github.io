@@ -36,12 +36,13 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     
-    // Smooth percentage-based zoom (10% change each scroll)
     const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
     const newZoom = Math.max(0.5, Math.min(10, zoom * zoomFactor));
-    setZoom(newZoom);
     
-    // Show zoom level temporarily
+    requestAnimationFrame(() => {
+      setZoom(newZoom);
+    });
+    
     setShowZoomLevel(true);
     setTimeout(() => setShowZoomLevel(false), 1500);
   };
@@ -109,7 +110,8 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
             style={{
               transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,
               cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'pointer',
-              transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+              transition: isDragging ? 'none' : 'none',
+              willChange: 'transform'
             }}
           />
           <button className="nav-button next" onClick={nextPhoto}>›</button>
