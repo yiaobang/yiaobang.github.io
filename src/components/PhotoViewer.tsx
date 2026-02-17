@@ -92,28 +92,35 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
     };
   }, []);
 
+  const currentPhoto = photos[index];
+
   return (
     <div className="photo-viewer-overlay" onClick={onClose}>
       <div className="photo-viewer-content" onClick={(e) => e.stopPropagation()}>
         <div className="photo-container">
           <button className="nav-button prev" onClick={prevPhoto}>‹</button>
-          <img 
-            src={photos[index]} 
-            alt={`Photo ${index + 1}`} 
-            className="viewer-image" 
-            onClick={zoom > 1 ? undefined : onClose}
+          <picture
             onWheel={handleWheel}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            style={{
-              transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,
-              cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'pointer',
-              transition: isDragging ? 'none' : 'none',
-              willChange: 'transform'
-            }}
-          />
+            onMouseLeave={handleMouseUp} 
+          >
+            <source srcSet={currentPhoto} type="image/webp" />
+            <source srcSet={currentPhoto.replace(/\.webp$/, '.jpg')} type="image/jpeg" />
+            <img 
+              src={currentPhoto.replace(/\.webp$/, '.jpg')} 
+              alt={`Photo ${index + 1}`} 
+              className="viewer-image" 
+              onClick={zoom > 1 ? undefined : onClose}
+              style={{
+                transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,
+                cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'pointer',
+                transition: isDragging ? 'none' : 'none',
+                willChange: 'transform'
+              }}
+            />
+          </picture>
           <button className="nav-button next" onClick={nextPhoto}>›</button>
         </div>
         
