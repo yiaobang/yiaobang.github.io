@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import LanguageSelector from "./components/LanguageSelector";
 import ProfileCard from "./components/ProfileCard";
 import ContentCard from "./components/ContentCard";
