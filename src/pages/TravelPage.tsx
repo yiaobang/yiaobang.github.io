@@ -16,20 +16,30 @@ const TravelPage = () => {
   const navigate = useNavigate();
   const [travels, setTravels] = useState<TravelItem[]>([]);
   const [photoCount, setPhotoCount] = useState<Record<string, number>>({});
+  const [openYears, setOpenYears] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     Promise.all([
       fetch('/data/travels.json').then(res => res.json()),
       fetch('/data/photos.json').then(res => res.json())
     ]).then(([travelsData, photosData]) => {
-      setTravels(travelsData.reverse());
+      const reversed = (travelsData as TravelItem[]).reverse();
+      setTravels(reversed);
+      
       const counts: Record<string, number> = {};
       Object.keys(photosData).forEach(id => {
         counts[id] = photosData[id].length;
       });
       setPhotoCount(counts);
+
+      // Default all years to open
+      const lang = i18n.language as 'zh' | 'en' | 'ja';
+      const yearsSet = new Set(reversed.map(trip => trip[lang].date.split('-')[0]));
+      const initialOpen: Record<string, boolean> = {};
+      yearsSet.forEach(year => initialOpen[year] = true);
+      setOpenYears(initialOpen);
     });
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     const savedScrollY = sessionStorage.getItem('travelPageScrollY');
@@ -44,16 +54,31 @@ const TravelPage = () => {
     navigate(`/travel/${tripId}`);
   };
 
+  const toggleYear = (year: string) => {
+    setOpenYears(prev => ({ ...prev, [year]: !prev[year] }));
+  };
+
   const getEmoji = (folder: string) => {
     if (folder.includes('ハルカス')) return '🏢';
-    if (folder.includes('花見')) return '🌸';
+    if (folder.includes('花见') || folder.includes('花見')) return '🌸';
     if (folder.includes('夜景')) return '🌃';
     if (folder.includes('金剛山')) return '⛰️';
     if (folder.includes('午後')) return '🌅';
-    if (folder.includes('博物館')) return '🚴';
+    if (folder.includes('博物馆') || folder.includes('博物館')) return '🚴';
     if (folder.includes('生駒山')) return '🌲';
     if (folder.includes('海道')) return '🌊';
     return '📸';
+  };
+
+  const groupTravelsByYear = () => {
+    const groups: Record<string, TravelItem[]> = {};
+    const lang = i18n.language as 'zh' | 'en' | 'ja';
+    travels.forEach(trip => {
+      const year = trip[lang].date.split('-')[0];
+      if (!groups[year]) groups[year] = [];
+      groups[year].push(trip);
+    });
+    return Object.entries(groups).sort((a, b) => b[0].localeCompare(a[0]));
   };
 
   return (
@@ -66,31 +91,46 @@ const TravelPage = () => {
       </div>
 
       <div className="timeline-container">
-        <div className="timeline">
-          {travels.map((trip, index) => {
-            const lang = i18n.language as 'zh' | 'en' | 'ja';
-            const tripData = trip[lang];
-            return (
-              <div 
-                key={trip.id} 
-                className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                data-date={tripData.date}
-                onClick={() => handleTripClick(trip.id)}
-              >
-                <div className="timeline-content">
-                  <div className="trip-icon">{getEmoji(trip.folder)}</div>
-                  <div className="trip-date-mobile">{tripData.date}</div>
-                  <h3 className="trip-location">{tripData.location}</h3>
-                  <p className="trip-description">{tripData.short_description}</p>
-                  <div className="photo-count">
-                    {photoCount[trip.id] || 0} {t('photos_count')}
-                  </div>
-                  <div className="view-photos">{t('view_photos')}</div>
-                </div>
+        {groupTravelsByYear().map(([year, items]) => (
+          <div key={year} className={`year-drawer ${openYears[year] ? 'open' : ''}`}>
+            <div className="year-header" onClick={() => toggleYear(year)}>
+              <span className="year-number">{year}</span>
+              <span className="year-arrow"></span>
+            </div>
+            
+            <div className="year-content">
+              <div className="timeline">
+                {items.map((trip) => {
+                  const lang = i18n.language as 'zh' | 'en' | 'ja';
+                  const tripData = trip[lang];
+                  return (
+                    <div 
+                      key={trip.id} 
+                      className="timeline-item bento-link"
+                      onClick={() => handleTripClick(trip.id)}
+                    >
+                      <div className="timeline-content">
+                        <div className="travel-top">
+                          <span className="trip-date-badge">{tripData.date}</span>
+                          <span className="photo-count-badge">
+                            📸 {photoCount[trip.id] || 0}
+                          </span>
+                        </div>
+                        
+                        <h3 className="trip-location">{tripData.location}</h3>
+                        <p className="trip-description">{tripData.short_description}</p>
+                        
+                        <div className="bento-icon-bg travel-bg-icon">
+                          {getEmoji(trip.folder)}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

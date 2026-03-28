@@ -1,216 +1,235 @@
 .project-detail-page {
   min-height: 100vh;
-  background: #1a1a1a;
   color: #fff;
-  padding: 2rem;
+  padding-bottom: 5rem;
 }
 
-.project-header {
-  max-width: 1000px;
-  margin: 0 auto 2rem;
+/* Floating Navbar */
+.project-nav-bar {
+  position: fixed;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.nav-btn {
+  pointer-events: auto;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.back-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.github-glass {
+  background: rgba(102, 126, 234, 0.25);
+  border: 1px solid rgba(102, 126, 234, 0.4);
+  color: #a5b4fc;
+}
+
+.nav-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hero Section */
+.project-hero {
+  height: 60vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.back-button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.back-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-.project-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-
-.github-button {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-}
-
-.github-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-}
-
-.project-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.loading {
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
   text-align: center;
-  color: #ccc;
-  font-size: 1.1rem;
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
-.markdown-content {
-  line-height: 1.7;
-  color: #e0e0e0;
+.hero-content {
+  position: relative;
+  z-index: 5;
+  animation: floatUpProj 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.markdown-content h1 {
-  font-size: 2.2rem;
-  color: #fff;
-  margin: 2rem 0 1rem;
-  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
-  padding-bottom: 0.5rem;
+.hero-title {
+  font-size: 6rem;
+  font-weight: 800;
+  letter-spacing: -3px;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #fff, #9eb0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
 }
 
-.markdown-content h2 {
-  font-size: 1.8rem;
-  color: #f0f0f0;
-  margin: 1.8rem 0 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.3rem;
+.project-badge-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.markdown-content h3 {
-  font-size: 1.4rem;
-  color: #e0e0e0;
-  margin: 1.5rem 0 0.8rem;
-}
-
-.markdown-content h4 {
-  font-size: 1.2rem;
-  color: #d0d0d0;
-  margin: 1.2rem 0 0.6rem;
-}
-
-.markdown-content p {
-  margin: 1rem 0;
-  color: #ccc;
-}
-
-.markdown-content ul {
-  margin: 1rem 0;
-  padding-left: 2rem;
-}
-
-.markdown-content li {
-  margin: 0.5rem 0;
-  color: #ccc;
-}
-
-.markdown-content strong {
-  color: #fff;
-  font-weight: 600;
-}
-
-.markdown-content em {
-  color: #a5b4fc;
-  font-style: italic;
-}
-
-.markdown-content code {
-  background: rgba(102, 126, 234, 0.2);
-  color: #a5b4fc;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 0.9em;
-}
-
-.markdown-content pre {
-  background: rgba(0, 0, 0, 0.3);
+.badge-glass {
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.badge-glass.active {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.hero-bg-icon {
+  position: absolute;
+  font-size: 25rem;
+  opacity: 0.08;
+  right: -5%;
+  bottom: -15%;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+/* Detail Container */
+.project-detail-container {
+  max-width: 1000px;
+  margin: -5rem auto 0;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.project-content-glass {
+  background: rgba(25, 25, 30, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  padding: 4rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  animation: floatUpProj 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Enhanced Markdown Styling */
+.markdown-content-enhanced {
+  line-height: 1.8;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.markdown-content-enhanced h1, 
+.markdown-content-enhanced h2 {
+  background: linear-gradient(135deg, #fff, #c7d2fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.markdown-content-enhanced h1 { font-size: 3rem; }
+.markdown-content-enhanced h2 { font-size: 2.2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.8rem;}
+
+.markdown-content-enhanced code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  color: #a5b4fc;
+}
+
+.markdown-content-enhanced pre {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 2rem 0;
   overflow-x: auto;
-  margin: 1rem 0;
 }
 
-.markdown-content pre code {
-  background: none;
-  padding: 0;
-  color: #e0e0e0;
+.markdown-content-enhanced img {
+  border-radius: 24px;
+  margin: 3rem 0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.markdown-content blockquote {
-  border-left: 4px solid #667eea;
-  margin: 1rem 0;
-  padding-left: 1rem;
-  color: #bbb;
-  font-style: italic;
+/* Shimmer Loading */
+.loading-shimmer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.markdown-content table {
+.shimmer-line {
+  height: 20px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
   width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
 }
 
-.markdown-content th,
-.markdown-content td {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.5rem;
-  text-align: left;
+.shimmer-line.short { width: 60%; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
-.markdown-content th {
-  background: rgba(102, 126, 234, 0.2);
-  font-weight: 600;
+@keyframes floatUpProj {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.markdown-content img {
-  display: block;
-  margin: 1rem auto;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-  .project-detail-page {
-    padding: 1rem;
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 3.5rem;
+    letter-spacing: -1.5px;
   }
   
-  .project-header {
-    flex-direction: column;
-    text-align: center;
+  .project-hero {
+    height: 40vh;
   }
   
-  .project-title {
-    font-size: 1.6rem;
+  .project-content-glass {
+    padding: 2rem;
+    margin-top: -2rem;
   }
   
-  .project-content {
-    padding: 1.5rem;
+  .project-nav-bar {
+    padding: 0 1rem;
+    top: 1rem;
   }
   
-  .markdown-content h1 {
-    font-size: 1.8rem;
-  }
-  
-  .markdown-content h2 {
-    font-size: 1.5rem;
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
 }
