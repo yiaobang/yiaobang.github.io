@@ -1,72 +1,75 @@
 .language-selector {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2000;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 8px 12px;
-  backdrop-filter: blur(10px);
-  gap: 8px;
-  transition: all 0.3s ease;
+  background: rgba(35, 35, 40, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 100px; /* Full pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .language-selector:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(50, 50, 55, 0.6);
+  border-color: rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+.language-icon {
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
 }
 
 .language-hint {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.9);
-  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
 }
 
 .language-selector select {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide native select but keep it clickable */
   cursor: pointer;
-  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.language-selector select:hover {
-  color: #667eea;
-}
-
+/* Fallback for browsers where opacity 0 might not work well for interaction */
 .language-selector select option {
-  background: #333;
+  background: #1a1a20;
   color: white;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {
   .language-selector {
-    top: 15px;
-    right: 15px;
-    padding: 6px 10px;
+    top: auto;
+    bottom: 2rem;
+    right: 50%;
+    transform: translateX(50%); /* Center at bottom on mobile */
+    padding: 0.6rem 1.2rem;
+    background: rgba(30, 30, 35, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
-  
-  .language-hint {
-    display: none;
-  }
-  
-  .language-selector select {
-    font-size: 13px;
-  }
-}
 
-@media (max-width: 480px) {
-  .language-selector {
-    top: 10px;
-    right: 10px;
-    padding: 5px 8px;
-  }
-  
-  .language-selector select {
-    font-size: 12px;
+  .language-selector:hover {
+    transform: translateX(50%) translateY(-2px);
   }
 }

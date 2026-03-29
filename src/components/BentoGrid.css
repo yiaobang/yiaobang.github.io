@@ -242,5 +242,38 @@
   .bento-travel { grid-area: auto; }
   .bento-projects { grid-area: auto; }
   .bento-social-stack { grid-area: auto; flex-direction: column; height: auto;}
-  .hero-title { font-size: 2.5rem; }
+  .hero-title { font-size: 2.2rem; }
+  
+  .hero-subtitle {
+    position: static;
+    writing-mode: horizontal-tb;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-avatar {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .bento-hero {
+    padding: 2.5rem 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+    width: 100%;
+  }
 }
