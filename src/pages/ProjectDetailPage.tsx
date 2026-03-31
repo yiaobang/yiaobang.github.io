@@ -63,7 +63,7 @@ const ProjectDetailPage = () => {
       {/* Floating Control Bar */}
       <div className="project-nav-bar">
         <button className="nav-btn back-glass" onClick={() => navigate('/projects')}>
-          ← {t('back_to_projects')}
+          {t('back_to_projects')}
         </button>
         <a 
           href="https://github.com/yiaobang/SerialPortToolFX" 
@@ -80,7 +80,7 @@ const ProjectDetailPage = () => {
           <h1 className="hero-title">SerialPortToolFX</h1>
           <div className="project-badge-row">
             <span className="badge-glass">JavaFX</span>
-            <span className="badge-glass">v1.2.0</span>
+            <span className="badge-glass">v2.0.1</span>
             <span className="badge-glass active">Live</span>
           </div>
         </div>
