@@ -3,7 +3,7 @@
     "id": "1",
     "folder": "1.しまなみ海道",
     "zh": {
-      "location": "岛波海道",
+      "location": "岛并海道",
       "date": "2024-07-29",
       "description": "连接岛屿的绝美骑行路线，海景和大桥令人震撼！",
       "short_description": "连接岛屿的骑行路线"
@@ -157,10 +157,10 @@
     "id": "8",
     "folder": "8.ハルカス",
     "zh": {
-      "location": "大阪阿倍野哈鲁卡斯",
+      "location": "阿倍野海阔天空大厦",
       "date": "2025-05-06",
       "description": "从日本最高楼俯瞰的惊人景色，令人屏息的城市景观！",
-      "short_description": "日本最高楼，俯瞰城市美景"
+      "short_description": "日本最高建筑，俯瞰城市美景"
     },
     "en": {
       "location": "Abeno Harukas, Osaka",
@@ -173,6 +173,28 @@
       "date": "2025-05-06",
       "description": "日本最高層ビルから俯瞰する驚きの景色、息を呑む都市景観！",
       "short_description": "日本最高層ビル、都市美景を俯瞰"
+    }
+  },
+  {
+    "id": "9",
+    "folder": "9.奈良公園",
+    "zh": {
+      "location": "奈良公园",
+      "date": "2026-04-05",
+      "description": "满开的樱花与可爱的小鹿。感受春日里的自然之美！",
+      "short_description": "樱花与小鹿的春日邂逅"
+    },
+    "en": {
+      "location": "Nara Park",
+      "date": "2026-04-05",
+      "description": "Full bloom cherry blossoms and adorable deer. Enjoying the natural beauty of early spring!",
+      "short_description": "Spring date with cherry blossoms and deer"
+    },
+    "ja": {
+      "location": "奈良公園",
+      "date": "2026-04-05",
+      "description": "満開の桜と可愛い鹿たち。春の自然の美しさを満喫！",
+      "short_description": "桜と鹿たちの春の出会い"
     }
   }
 ]
