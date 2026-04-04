@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import PhotoViewer from '../components/PhotoViewer';
@@ -14,7 +14,6 @@ interface TravelItem {
 
 const TravelDetailPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [photos, setPhotos] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -91,18 +90,14 @@ const TravelDetailPage = () => {
             <div className="photos-grid">
               {photos.slice(0, displayedPhotos).map((photo, index) => (
                 <div key={index} className="photo-item" onClick={() => openViewer(index)}>
-                  <picture>
-                    <source srcSet={photo} type="image/webp" />
-                    <source srcSet={photo.replace(/\.webp$/, '.jpg')} type="image/jpeg" />
-                    <img 
-                      src={photo.replace(/\.webp$/, '.jpg')} 
-                      alt={`Photo ${index + 1}`} 
-                      className="photo-image"
-                      loading="lazy"
-                      decoding="async"
-                      onLoad={(e) => e.currentTarget.style.opacity = '1'}
-                    />
-                  </picture>
+                  <img 
+                    src={photo} 
+                    alt={`Photo ${index + 1}`} 
+                    className="photo-image"
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={(e) => e.currentTarget.style.opacity = '1'}
+                  />
                   <div className="photo-overlay">
                     <span>{t('view_full_size')}</span>
                   </div>

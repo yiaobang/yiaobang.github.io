@@ -99,28 +99,24 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
       <div className="photo-viewer-content" onClick={(e) => e.stopPropagation()}>
         <div className="photo-container">
           <button className="nav-button prev" onClick={prevPhoto}>‹</button>
-          <picture
+          <img 
+            src={currentPhoto} 
+            alt={`Photo ${index + 1}`} 
+            className="viewer-image" 
+            onClick={zoom > 1 ? undefined : onClose}
             onWheel={handleWheel}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp} 
-          >
-            <source srcSet={currentPhoto} type="image/webp" />
-            <source srcSet={currentPhoto.replace(/\.webp$/, '.jpg')} type="image/jpeg" />
-            <img 
-              src={currentPhoto.replace(/\.webp$/, '.jpg')} 
-              alt={`Photo ${index + 1}`} 
-              className="viewer-image" 
-              onClick={zoom > 1 ? undefined : onClose}
-              style={{
-                transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,
-                cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'pointer',
-                transition: isDragging ? 'none' : 'none',
-                willChange: 'transform'
-              }}
-            />
-          </picture>
+            draggable={false}
+            style={{
+              transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,
+              cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'pointer',
+              transition: isDragging ? 'none' : 'none',
+              willChange: 'transform'
+            }}
+          />
           <button className="nav-button next" onClick={nextPhoto}>›</button>
         </div>
         
