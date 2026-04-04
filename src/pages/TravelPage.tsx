@@ -59,13 +59,14 @@ const TravelPage = () => {
   };
 
   const getEmoji = (folder: string) => {
+    if (folder.includes('奈良公園') || folder.includes('奈良公园')) return '🌸🦌';
     if (folder.includes('ハルカス')) return '🏢';
     if (folder.includes('花见') || folder.includes('花見')) return '🌸';
     if (folder.includes('夜景')) return '🌃';
-    if (folder.includes('金剛山')) return '⛰️';
-    if (folder.includes('午後')) return '🌅';
+    if (folder.includes('金剛山') || folder.includes('金刚山')) return '⛰️';
+    if (folder.includes('生駒山') || folder.includes('生驹山')) return '⛰️';
+    if (folder.includes('午後') || folder.includes('午后')) return '🌅';
     if (folder.includes('博物馆') || folder.includes('博物館')) return '🚴';
-    if (folder.includes('生駒山')) return '🌲';
     if (folder.includes('海道')) return '🌊';
     return '📸';
   };

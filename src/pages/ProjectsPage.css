@@ -129,6 +129,7 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1rem;
+  gap: 1rem;
 }
 
 .project-name {
@@ -136,6 +137,7 @@
   font-weight: 700;
   color: #fff;
   margin: 0;
+  word-break: break-word;
 }
 
 .project-status {
@@ -143,6 +145,8 @@
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 500;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .project-status.completed {
@@ -193,15 +197,25 @@
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .project-card {
     aspect-ratio: auto;
-    min-height: 400px;
+    min-height: auto;
+    padding: 1.5rem;
   }
   
   .projects-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  
+  .project-name {
+    font-size: 1.5rem;
+  }
+  
+  .project-top {
+    gap: 0.75rem;
   }
   
   .project-actions {
