@@ -19,6 +19,7 @@ async function convertToWebP(filePath) {
   
   try {
     await sharp(filePath)
+      .rotate()
       .webp({ quality: 85 })
       .toFile(webpPath);
     console.log(`✓ 转换: ${path.basename(filePath)} -> ${path.basename(webpPath)}`);
@@ -38,17 +39,22 @@ async function processDirectory(dir) {
   for (const folder of folders) {
     const folderPath = path.join(dir, folder);
     const files = fs.readdirSync(folderPath);
-    const imageFiles = files.filter(f => /\.(jpg|jpeg|png)$/i.test(f));
+    const imageFiles = files.filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
     
     console.log(`\n处理文件夹: ${folder} (${imageFiles.length} 张图片)`);
     
     const webpPaths = [];
     for (const file of imageFiles) {
       const filePath = path.join(folderPath, file);
-      const webpPath = await convertToWebP(filePath);
-      if (webpPath) {
-        const relativePath = webpPath.replace(/\\/g, '/').split('public')[1];
+      if (file.toLowerCase().endsWith('.webp')) {
+        const relativePath = filePath.replace(/\\/g, '/').split('public')[1];
         webpPaths.push(relativePath);
+      } else {
+        const webpPath = await convertToWebP(filePath);
+        if (webpPath) {
+          const relativePath = webpPath.replace(/\\/g, '/').split('public')[1];
+          webpPaths.push(relativePath);
+        }
       }
     }
     
