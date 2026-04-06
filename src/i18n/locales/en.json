@@ -35,5 +35,6 @@
   "project_website_title": "Personal Website",
   "project_website_desc": "A responsive site built with React to showcase my travel stories and personal projects.",
   "status_completed": "Completed",
-  "status_in_progress": "In Progress"
+  "status_in_progress": "In Progress",
+  "welcome": "Welcome"
 }

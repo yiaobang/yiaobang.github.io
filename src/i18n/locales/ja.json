@@ -35,5 +35,6 @@
   "project_website_title": "パーソナルウェブサイト",
   "project_website_desc": "Reactで構築したレスポンシブサイトで、私の旅の記録や個人プロジェクトを紹介しています。",
   "status_completed": "完了",
-  "status_in_progress": "進行中"
+  "status_in_progress": "進行中",
+  "welcome": "ようこそ"
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import LanguageSelector from "./components/LanguageSelector";
 import BentoGrid from "./components/BentoGrid";
@@ -6,6 +7,7 @@ import TravelDetailPage from "./pages/TravelDetailPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import AnimatedBackground from "./components/AnimatedBackground";
+import SplashScreen from "./components/SplashScreen";
 import "./App.css";
 
 const HomePage = () => {
@@ -17,9 +19,20 @@ const HomePage = () => {
 };
 
 function App() {
+  const [isInitializing, setIsInitializing] = useState(() => {
+    // Check if splash has already been shown in this session
+    return !sessionStorage.getItem('hasSeenSplash');
+  });
+
+  const handleSplashComplete = () => {
+    sessionStorage.setItem('hasSeenSplash', 'true');
+    setIsInitializing(false);
+  };
+
   return (
     <Router>
       <div className="App">
+        {isInitializing && <SplashScreen onComplete={handleSplashComplete} />}
         <AnimatedBackground />
         <LanguageSelector />
         
