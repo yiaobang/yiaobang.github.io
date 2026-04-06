@@ -25,21 +25,29 @@ const TravelDetailPage = () => {
   const [photosList, setPhotosList] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
+    let isMounted = true;
     Promise.all([
       fetch('/data/travels.json').then(res => res.json()),
       fetch('/data/photos.json').then(res => res.json())
     ]).then(([travelsData, photosData]) => {
-      const item = travelsData.find((t: TravelItem) => t.id === id);
+      if (!isMounted) return;
+      const item = (travelsData as TravelItem[]).find((t: TravelItem) => t.id === id);
       setTravelData(item || null);
       setPhotosList(photosData);
     });
+    return () => { isMounted = false; };
   }, [id]);
 
   useEffect(() => {
-    if (travelData && photosList[travelData.id]) {
-      const webpPhotos = photosList[travelData.id].map(p => p.replace(/\.jpg$/, '.webp'));
-      setPhotos(webpPhotos);
-      setShowLoadMore(photosList[travelData.id].length > 12);
+    if (travelData) {
+      if (photosList[travelData.id]) {
+        const webpPhotos = photosList[travelData.id].map(p => p.replace(/\.jpg$/, '.webp'));
+        setPhotos(webpPhotos);
+        setShowLoadMore(photosList[travelData.id].length > 12);
+      }
+      setLoading(false);
+    } else if (photosList && Object.keys(photosList).length > 0) {
+      // Data fetched but this specific ID wasn't found
       setLoading(false);
     }
   }, [travelData, photosList]);
@@ -57,8 +65,22 @@ const TravelDetailPage = () => {
     window.history.back();
   };
 
+  if (loading) {
+    return <div className="travel-detail-page page-reveal">
+      <div className="detail-header">
+        <button className="back-button" onClick={handleBackToTimeline}>
+          {t('back_to_timeline')}
+        </button>
+        <div className="loading-container">
+           <div className="loading-spinner"></div>
+           <p>{t('loading_photos')}</p>
+        </div>
+      </div>
+    </div>;
+  }
+
   if (!travelData) {
-    return <div className="travel-detail-page">
+    return <div className="travel-detail-page page-reveal">
       <div className="detail-header">
         <button className="back-button" onClick={handleBackToTimeline}>
           {t('back_to_timeline')}
@@ -72,7 +94,7 @@ const TravelDetailPage = () => {
   const tripData = travelData[lang];
 
   return (
-    <div className="travel-detail-page">
+    <div className="travel-detail-page page-reveal">
       <div className="detail-header">
         <button className="back-button" onClick={handleBackToTimeline}>
           {t('back_to_timeline')}

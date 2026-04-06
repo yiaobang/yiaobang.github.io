@@ -35,5 +35,10 @@
   "project_website_title": "个人网站",
   "project_website_desc": "一个使用React构建的响应式网站，用来展示我的旅行见闻与个人项目。",
   "status_completed": "已完成",
-  "status_in_progress": "进行中"
+  "status_in_progress": "进行中",
+  "stats_milestones": "次旅程",
+  "stats_photos": "张快门",
+  "stats_years": "跨越年份",
+  "stats_status": "当前状态",
+  "stats_active": "活跃探索者"
 }

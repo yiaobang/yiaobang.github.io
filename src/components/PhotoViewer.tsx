@@ -17,6 +17,9 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [showZoomLevel, setShowZoomLevel] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [lastTap, setLastTap] = useState(0);
 
   const nextPhoto = () => {
     setIndex((prev) => (prev + 1) % photos.length);
@@ -34,8 +37,7 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
   };
 
   const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    
+    // Zoom factor logic
     const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
     const newZoom = Math.max(0.5, Math.min(10, zoom * zoomFactor));
     
@@ -65,6 +67,42 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isSwipeLeft = distance > 50;
+    const isSwipeRight = distance < -50;
+    
+    if (isSwipeLeft) nextPhoto();
+    if (isSwipeRight) prevPhoto();
+  };
+
+  const handleTap = () => {
+    const now = Date.now();
+    const DOUBLE_TAP_DELAY = 300;
+    
+    if (now - lastTap < DOUBLE_TAP_DELAY) {
+      // Double tap detected
+      if (zoom > 1) resetZoom();
+      else setZoom(2.5);
+      setLastTap(0);
+    } else {
+      setLastTap(now);
+      if (zoom <= 1) {
+        // e.stopPropagation() etc handled via overlay/image logic
+      }
+    }
   };
 
   useEffect(() => {
@@ -103,12 +141,18 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
             src={currentPhoto} 
             alt={`Photo ${index + 1}`} 
             className="viewer-image" 
-            onClick={zoom > 1 ? undefined : onClose}
+            onClick={() => {
+              handleTap();
+              if (zoom <= 1) onClose();
+            }}
             onWheel={handleWheel}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp} 
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             draggable={false}
             style={{
               transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,

@@ -29,7 +29,7 @@ const ProjectsPage = () => {
   ];
 
   return (
-    <div className="projects-page">
+    <div className="projects-page page-reveal">
       <div className="projects-container">
         <div className="projects-header">
           <Link to="/" className="back-link">

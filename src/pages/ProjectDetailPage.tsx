@@ -11,6 +11,7 @@ const ProjectDetailPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
     const loadReadme = async () => {
       setLoading(true);
       try {
@@ -27,15 +28,16 @@ const ProjectDetailPage = () => {
         }
 
         const text = await response.text();
-        setContent(text);
+        if (isMounted) setContent(text);
       } catch (error) {
         console.error('Error loading readme:', error);
-        setContent('# SerialPortToolFX\n\n项目详情加载失败，请访问 GitHub 查看完整信息。');
+        if (isMounted) setContent('# SerialPortToolFX\n\n项目详情加载失败，请访问 GitHub 查看完整信息。');
       }
-      setLoading(false);
+      if (isMounted) setLoading(false);
     };
 
     loadReadme();
+    return () => { isMounted = false; };
   }, [i18n.language]);
 
 
@@ -59,7 +61,7 @@ const ProjectDetailPage = () => {
   };
 
   return (
-    <div className="project-detail-page">
+    <div className="project-detail-page page-reveal">
       {/* Floating Control Bar */}
       <div className="project-nav-bar">
         <button className="nav-btn back-glass" onClick={() => navigate('/projects')}>
