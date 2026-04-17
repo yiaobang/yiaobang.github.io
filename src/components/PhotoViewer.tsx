@@ -134,9 +134,32 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
 
   return (
     <div className="photo-viewer-overlay" onClick={onClose}>
+      {/* Top action bar */}
+      <div className="viewer-top-bar" onClick={(e) => e.stopPropagation()}>
+        <div className="photo-info-top">
+          {index + 1} / {photos.length}
+        </div>
+        <button className="close-button" onClick={onClose} aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      {/* Navigation Arrows fixed to edges */}
+      <button 
+        className="nav-button prev" 
+        onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+      >
+        ‹
+      </button>
+      <button 
+        className="nav-button next" 
+        onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+      >
+        ›
+      </button>
+
       <div className="photo-viewer-content" onClick={(e) => e.stopPropagation()}>
-        <div className="photo-container">
-          <button className="nav-button prev" onClick={prevPhoto}>‹</button>
+        <div className="photo-wrapper">
           <img 
             src={currentPhoto} 
             alt={`Photo ${index + 1}`} 
@@ -156,16 +179,11 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
             draggable={false}
             style={{
               transform: `scale(${zoom}) translate(${imagePosition.x / zoom}px, ${imagePosition.y / zoom}px)`,
-              cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'pointer',
-              transition: isDragging ? 'none' : 'none',
+              cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in',
+              transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.2, 0, 0.2, 1)',
               willChange: 'transform'
             }}
           />
-          <button className="nav-button next" onClick={nextPhoto}>›</button>
-        </div>
-        
-        <div className="photo-info">
-          <span>{index + 1} / {photos.length}</span>
         </div>
         
         {showZoomLevel && (
