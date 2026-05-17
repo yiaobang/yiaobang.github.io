@@ -9,7 +9,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "convert-webp": "node convert-to-webp.mjs"
+    "convert-webp": "node convert-to-webp.mjs",
+    "optimize-images": "node generate-image-variants.mjs"
   },
   "homepage": "https://yiaobang.github.io",
   "dependencies": {

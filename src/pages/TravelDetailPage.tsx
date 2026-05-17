@@ -1,56 +1,54 @@
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import PhotoViewer from '../components/PhotoViewer';
+import { toDisplayImagePath, toThumbImagePath } from '../data/imageVariants';
+import { loadTravelData, type TravelItem, type PhotosByTravelId } from '../data/travelData';
 import './TravelDetailPage.css';
-
-interface TravelItem {
-  id: string;
-  folder: string;
-  zh: { location: string; date: string; description: string; short_description: string };
-  en: { location: string; date: string; description: string; short_description: string };
-  ja: { location: string; date: string; description: string; short_description: string };
-}
 
 const TravelDetailPage = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
-  const [photos, setPhotos] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [viewerOpen, setViewerOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [displayedPhotos, setDisplayedPhotos] = useState(12);
-  const [showLoadMore, setShowLoadMore] = useState(false);
   const [travelData, setTravelData] = useState<TravelItem | null>(null);
-  const [photosList, setPhotosList] = useState<Record<string, string[]>>({});
+  const [photosList, setPhotosList] = useState<PhotosByTravelId>({});
 
   useEffect(() => {
     let isMounted = true;
-    Promise.all([
-      fetch('/data/travels.json').then(res => res.json()),
-      fetch('/data/photos.json').then(res => res.json())
-    ]).then(([travelsData, photosData]) => {
+    setLoading(true);
+    setDisplayedPhotos(12);
+    setViewerOpen(false);
+
+    loadTravelData().then(({ travels, photosByTravelId }) => {
       if (!isMounted) return;
-      const item = (travelsData as TravelItem[]).find((t: TravelItem) => t.id === id);
+
+      const item = travels.find((travel) => travel.id === id);
       setTravelData(item || null);
-      setPhotosList(photosData);
+      setPhotosList(photosByTravelId);
+      setLoading(false);
+    }).catch((error) => {
+      console.error('Error loading travel data:', error);
+      if (isMounted) setLoading(false);
     });
+
     return () => { isMounted = false; };
   }, [id]);
 
-  useEffect(() => {
-    if (travelData) {
-      if (photosList[travelData.id]) {
-        const webpPhotos = photosList[travelData.id].map(p => p.replace(/\.jpg$/, '.webp'));
-        setPhotos(webpPhotos);
-        setShowLoadMore(photosList[travelData.id].length > 12);
-      }
-      setLoading(false);
-    } else if (photosList && Object.keys(photosList).length > 0) {
-      // Data fetched but this specific ID wasn't found
-      setLoading(false);
-    }
-  }, [travelData, photosList]);
+  const photos = useMemo(() => {
+    if (!travelData) return [];
+
+    return (photosList[travelData.id] || []).map((photo) =>
+      photo.replace(/\.jpe?g$/i, '.webp')
+    );
+  }, [photosList, travelData]);
+
+  const displayPhotos = useMemo(() => photos.map(toDisplayImagePath), [photos]);
+  const thumbPhotos = useMemo(() => photos.map(toThumbImagePath), [photos]);
+
+  const remainingPhotos = Math.max(photos.length - displayedPhotos, 0);
 
   const openViewer = (index: number) => {
     setCurrentPhotoIndex(index);
@@ -110,7 +108,7 @@ const TravelDetailPage = () => {
         ) : (
           <>
             <div className="photos-grid">
-              {photos.slice(0, displayedPhotos).map((photo, index) => (
+              {thumbPhotos.slice(0, displayedPhotos).map((photo, index) => (
                 <div key={index} className="photo-item" onClick={() => openViewer(index)}>
                   <img 
                     src={photo} 
@@ -126,18 +124,13 @@ const TravelDetailPage = () => {
                 </div>
               ))}
             </div>
-            {showLoadMore && displayedPhotos < photos.length && (
+            {remainingPhotos > 0 && (
               <div className="load-more-container">
                 <button 
                   className="load-more-button" 
-                  onClick={() => {
-                    setDisplayedPhotos(prev => Math.min(prev + 12, photos.length));
-                    if (displayedPhotos + 12 >= photos.length) {
-                      setShowLoadMore(false);
-                    }
-                  }}
+                  onClick={() => setDisplayedPhotos(prev => Math.min(prev + 12, photos.length))}
                 >
-                  {t('load_more')} ({photos.length - displayedPhotos} {t('photos_remaining')})
+                  {t('load_more')} ({remainingPhotos} {t('photos_remaining')})
                 </button>
               </div>
             )}
@@ -152,7 +145,8 @@ const TravelDetailPage = () => {
       
       {viewerOpen && (
         <PhotoViewer
-          photos={photos}
+          photos={displayPhotos}
+          thumbnails={thumbPhotos}
           currentIndex={currentPhotoIndex}
           onClose={closeViewer}
         />

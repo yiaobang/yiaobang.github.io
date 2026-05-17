@@ -4,6 +4,13 @@
   color: #fff;
 }
 
+.route-loading {
+  min-height: 50vh;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 /* Main Container */
 .main-container {
   min-height: 100vh;

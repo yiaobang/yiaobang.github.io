@@ -23,10 +23,16 @@ const AnimatedBackground = () => {
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(window.innerWidth * pixelRatio);
+      canvas.height = Math.floor(window.innerHeight * pixelRatio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     };
 
     const createBlobs = () => {
@@ -35,8 +41,8 @@ const AnimatedBackground = () => {
       
       for (let i = 0; i < 6; i++) {
         blobs.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 200 + 100,
@@ -49,7 +55,7 @@ const AnimatedBackground = () => {
 
     const animate = () => {
       timeRef.current += 0.005;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       
       // Update blobs
       blobsRef.current.forEach((blob, index) => {
@@ -58,10 +64,10 @@ const AnimatedBackground = () => {
         blob.y += blob.vy + Math.cos(timeRef.current + index) * 0.2;
         
         // Bounce off edges
-        if (blob.x < -blob.size/2) blob.x = canvas.width + blob.size/2;
-        if (blob.x > canvas.width + blob.size/2) blob.x = -blob.size/2;
-        if (blob.y < -blob.size/2) blob.y = canvas.height + blob.size/2;
-        if (blob.y > canvas.height + blob.size/2) blob.y = -blob.size/2;
+        if (blob.x < -blob.size/2) blob.x = window.innerWidth + blob.size/2;
+        if (blob.x > window.innerWidth + blob.size/2) blob.x = -blob.size/2;
+        if (blob.y < -blob.size/2) blob.y = window.innerHeight + blob.size/2;
+        if (blob.y > window.innerHeight + blob.size/2) blob.y = -blob.size/2;
         
         // Pulsing size
         const currentSize = blob.size + Math.sin(timeRef.current * 2 + index) * 20;
@@ -89,18 +95,33 @@ const AnimatedBackground = () => {
 
     resizeCanvas();
     blobsRef.current = createBlobs();
-    animate();
+    if (!reduceMotion) {
+      animate();
+    }
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resizeCanvas();
       blobsRef.current = createBlobs();
-    });
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden && animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = undefined;
+      } else if (!document.hidden && !animationRef.current && !reduceMotion) {
+        animate();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 

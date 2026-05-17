@@ -1,15 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { loadTravelData, type TravelItem } from '../data/travelData';
 import './TravelPage.css';
-
-interface TravelItem {
-  id: string;
-  folder: string;
-  zh: { location: string; date: string; description: string; short_description: string };
-  en: { location: string; date: string; description: string; short_description: string };
-  ja: { location: string; date: string; description: string; short_description: string };
-}
 
 const TravelPage = () => {
   const { t, i18n } = useTranslation();
@@ -18,20 +11,22 @@ const TravelPage = () => {
   const [photoCount, setPhotoCount] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    Promise.all([
-      fetch('/data/travels.json').then(res => res.json()),
-      fetch('/data/photos.json').then(res => res.json())
-    ]).then(([travelsData, photosData]) => {
-      const reversed = (travelsData as TravelItem[]).reverse();
-      setTravels(reversed);
+    let isMounted = true;
+
+    loadTravelData().then(({ travels, photosByTravelId }) => {
+      if (!isMounted) return;
+
+      setTravels([...travels].reverse());
       
       const counts: Record<string, number> = {};
-      Object.keys(photosData).forEach(id => {
-        counts[id] = photosData[id].length;
+      Object.keys(photosByTravelId).forEach(id => {
+        counts[id] = photosByTravelId[id].length;
       });
       setPhotoCount(counts);
     });
-  }, [i18n.language]);
+
+    return () => { isMounted = false; };
+  }, []);
 
   useEffect(() => {
     const savedScrollY = sessionStorage.getItem('travelPageScrollY');

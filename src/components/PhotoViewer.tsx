@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './PhotoViewer.css';
 
 interface PhotoViewerProps {
   photos: string[];
+  thumbnails: string[];
   currentIndex: number;
   onClose: () => void;
 }
 
-const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
+const PhotoViewer = ({ photos, thumbnails, currentIndex, onClose }: PhotoViewerProps) => {
   const { t } = useTranslation();
   const [index, setIndex] = useState(currentIndex);
   const [showHint, setShowHint] = useState(false);
@@ -21,20 +22,20 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [lastTap, setLastTap] = useState(0);
 
-  const nextPhoto = () => {
-    setIndex((prev) => (prev + 1) % photos.length);
-    resetZoom();
-  };
-
-  const prevPhoto = () => {
-    setIndex((prev) => (prev - 1 + photos.length) % photos.length);
-    resetZoom();
-  };
-
-  const resetZoom = () => {
+  const resetZoom = useCallback(() => {
     setZoom(1);
     setImagePosition({ x: 0, y: 0 });
-  };
+  }, []);
+
+  const nextPhoto = useCallback(() => {
+    setIndex((prev) => (prev + 1) % photos.length);
+    resetZoom();
+  }, [photos.length, resetZoom]);
+
+  const prevPhoto = useCallback(() => {
+    setIndex((prev) => (prev - 1 + photos.length) % photos.length);
+    resetZoom();
+  }, [photos.length, resetZoom]);
 
   const handleWheel = (e: React.WheelEvent) => {
     // Zoom factor logic
@@ -124,11 +125,31 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
       clearTimeout(timer);
       document.removeEventListener('keydown', handleKeyDown);
     };
+  }, [nextPhoto, onClose, prevPhoto]);
 
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
+  useEffect(() => {
+    const nearbyIndexes = [
+      (index + 1) % photos.length,
+      (index - 1 + photos.length) % photos.length,
+    ];
+
+    nearbyIndexes.forEach((photoIndex) => {
+      const image = new Image();
+      image.src = photos[photoIndex];
+    });
+  }, [index, photos]);
+
+  const visibleThumbnails = useMemo(() => {
+    const windowSize = 17;
+    const halfWindow = Math.floor(windowSize / 2);
+    const start = Math.max(0, Math.min(index - halfWindow, photos.length - windowSize));
+    const end = Math.min(photos.length, start + windowSize);
+
+    return thumbnails.slice(start, end).map((thumbnail, offset) => ({
+      thumbnail,
+      index: start + offset,
+    }));
+  }, [index, photos.length, thumbnails]);
 
   const currentPhoto = photos[index];
 
@@ -193,13 +214,18 @@ const PhotoViewer = ({ photos, currentIndex, onClose }: PhotoViewerProps) => {
         )}
         
         <div className="photo-thumbnails">
-          {photos.map((photo, i) => (
+          {visibleThumbnails.map(({ thumbnail, index: thumbnailIndex }) => (
             <img
-              key={i}
-              src={photo}
-              alt={`Thumbnail ${i + 1}`}
-              className={`thumbnail ${i === index ? 'active' : ''}`}
-              onClick={() => setIndex(i)}
+              key={thumbnail}
+              src={thumbnail}
+              alt={`Thumbnail ${thumbnailIndex + 1}`}
+              className={`thumbnail ${thumbnailIndex === index ? 'active' : ''}`}
+              loading="lazy"
+              decoding="async"
+              onClick={() => {
+                setIndex(thumbnailIndex);
+                resetZoom();
+              }}
             />
           ))}
         </div>
