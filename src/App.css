@@ -1,7 +1,7 @@
 .App {
   min-height: 100vh;
   background: transparent;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .route-loading {
@@ -22,14 +22,14 @@
 }
 
 @keyframes pageReveal {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(15px);
-    filter: blur(10px);
+    transform: translateY(30px) scale(0.98);
+    filter: blur(12px);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     filter: blur(0);
   }
 }

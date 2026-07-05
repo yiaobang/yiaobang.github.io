@@ -64,28 +64,32 @@ const TravelDetailPage = () => {
   };
 
   if (loading) {
-    return <div className="travel-detail-page page-reveal">
-      <div className="detail-header">
-        <button className="back-button" onClick={handleBackToTimeline}>
-          {t('back_to_timeline')}
-        </button>
+    return (
+      <div className="travel-detail-page page-reveal">
+        <div className="travel-top-nav">
+          <button className="pill-back-button" onClick={handleBackToTimeline}>
+            <span>←</span> {t('back_to_timeline') || 'Back'}
+          </button>
+        </div>
         <div className="loading-container">
            <div className="loading-spinner"></div>
            <p>{t('loading_photos')}</p>
         </div>
       </div>
-    </div>;
+    );
   }
 
   if (!travelData) {
-    return <div className="travel-detail-page page-reveal">
-      <div className="detail-header">
-        <button className="back-button" onClick={handleBackToTimeline}>
-          {t('back_to_timeline')}
-        </button>
-        <h1>{t('trip_not_found')}</h1>
+    return (
+      <div className="travel-detail-page page-reveal">
+        <div className="travel-top-nav">
+          <button className="pill-back-button" onClick={handleBackToTimeline}>
+            <span>←</span> {t('back_to_timeline') || 'Back'}
+          </button>
+        </div>
+        <h1 style={{textAlign: 'center', marginTop: '4rem'}}>{t('trip_not_found')}</h1>
       </div>
-    </div>;
+    );
   }
 
   const lang = i18n.language as 'zh' | 'en' | 'ja';
@@ -93,16 +97,23 @@ const TravelDetailPage = () => {
 
   return (
     <div className="travel-detail-page page-reveal">
-      <div className="detail-header">
-        <button className="back-button" onClick={handleBackToTimeline}>
-          {t('back_to_timeline')}
+      <div className="travel-top-nav">
+        <button className="pill-back-button" onClick={handleBackToTimeline}>
+          <span>←</span> {t('back_to_timeline') || 'Back'}
         </button>
+      </div>
+
+      <div className="detail-header reveal-on-scroll">
         <h1 className="detail-title">{tripData.location}</h1>
         <div className="detail-date">{tripData.date}</div>
       </div>
 
       <div className="photo-gallery">
-        <h2 className="gallery-title">{t('photo_gallery')} ({photos.length} {t('photos_count')})</h2>
+        <div className="gallery-header reveal-on-scroll">
+          <h2 className="gallery-title">{t('photo_gallery')}</h2>
+          <span className="gallery-count">{photos.length} {t('photos_count')}</span>
+        </div>
+        
         {loading ? (
           <div className="loading">{t('loading_photos')}</div>
         ) : (
@@ -125,7 +136,7 @@ const TravelDetailPage = () => {
               ))}
             </div>
             {remainingPhotos > 0 && (
-              <div className="load-more-container">
+              <div className="load-more-container reveal-on-scroll">
                 <button 
                   className="load-more-button" 
                   onClick={() => setDisplayedPhotos(prev => Math.min(prev + 12, photos.length))}
@@ -138,10 +149,12 @@ const TravelDetailPage = () => {
         )}
       </div>
 
-      <div className="trip-story">
-        <h2 className="story-title">{t('travel_story')}</h2>
-        <p className="story-text">{tripData.description}</p>
-      </div>
+      {tripData.description && (
+        <div className="trip-story reveal-on-scroll">
+          <h2 className="story-title">{t('travel_story')}</h2>
+          <p className="story-text">{tripData.description}</p>
+        </div>
+      )}
       
       {viewerOpen && (
         <PhotoViewer

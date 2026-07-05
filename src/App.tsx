@@ -1,14 +1,12 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import LanguageSelector from "./components/LanguageSelector";
-import BentoGrid from "./components/BentoGrid";
+import HeroSection from "./components/HeroSection";
 import AnimatedBackground from "./components/AnimatedBackground";
 import "./App.css";
 
 const TravelPage = lazy(() => import("./pages/TravelPage"));
 const TravelDetailPage = lazy(() => import("./pages/TravelDetailPage"));
-const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
-const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage"));
 
 const NavigationRefinement = () => {
   const { pathname } = useLocation();
@@ -47,7 +45,7 @@ const NavigationRefinement = () => {
 const HomePage = () => {
   return (
     <div className="main-container">
-      <BentoGrid />
+      <HeroSection />
     </div>
   );
 };
@@ -65,8 +63,6 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/travel" element={<TravelPage />} />
             <Route path="/travel/:id" element={<TravelDetailPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/project/:id" element={<ProjectDetailPage />} />
           </Routes>
         </Suspense>
       </div>
