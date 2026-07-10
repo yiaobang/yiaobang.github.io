@@ -1,15 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { loadTravelData, type TravelItem } from '../data/travelData';
 import './TravelPage.css';
-
-interface TravelItem {
-  id: string;
-  folder: string;
-  zh: { location: string; date: string; description: string; short_description: string };
-  en: { location: string; date: string; description: string; short_description: string };
-  ja: { location: string; date: string; description: string; short_description: string };
-}
 
 const TravelPage = () => {
   const { t, i18n } = useTranslation();
@@ -18,20 +11,22 @@ const TravelPage = () => {
   const [photoCount, setPhotoCount] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    Promise.all([
-      fetch('/data/travels.json').then(res => res.json()),
-      fetch('/data/photos.json').then(res => res.json())
-    ]).then(([travelsData, photosData]) => {
-      const reversed = (travelsData as TravelItem[]).reverse();
-      setTravels(reversed);
+    let isMounted = true;
+
+    loadTravelData().then(({ travels, photosByTravelId }) => {
+      if (!isMounted) return;
+
+      setTravels([...travels].reverse());
       
       const counts: Record<string, number> = {};
-      Object.keys(photosData).forEach(id => {
-        counts[id] = photosData[id].length;
+      Object.keys(photosByTravelId).forEach(id => {
+        counts[id] = photosByTravelId[id].length;
       });
       setPhotoCount(counts);
     });
-  }, [i18n.language]);
+
+    return () => { isMounted = false; };
+  }, []);
 
   useEffect(() => {
     const savedScrollY = sessionStorage.getItem('travelPageScrollY');
@@ -46,70 +41,43 @@ const TravelPage = () => {
     navigate(`/travel/${tripId}`);
   };
 
-  const getEmoji = (folder: string) => {
-    if (folder.includes('奈良公園') || folder.includes('奈良公园')) return '🌸🦌';
-    if (folder.includes('ハルカス')) return '🏢';
-    if (folder.includes('花见') || folder.includes('花見')) return '🌸';
-    if (folder.includes('夜景')) return '🌃';
-    if (folder.includes('金剛山') || folder.includes('金刚山')) return '⛰️';
-    if (folder.includes('生駒山') || folder.includes('生驹山')) return '⛰️';
-    if (folder.includes('午後') || folder.includes('午后')) return '🌅';
-    if (folder.includes('博物馆') || folder.includes('博物館')) return '🚴';
-    if (folder.includes('海道')) return '🌊';
-    return '📸';
-  };
-
-
   return (
     <div className="travel-page page-reveal">
       <div className="travel-top-nav">
-        <button className="back-button-circle" onClick={() => navigate('/')} title={t('back_to_home')}>
-          ←
+        <button className="pill-back-button" onClick={() => navigate('/')} title={t('back_to_home')}>
+          <span>←</span> {t('back_to_home') || 'Back'}
         </button>
       </div>
 
-      <div className="travel-simple-header">
+      <div className="travel-simple-header reveal-on-scroll">
         <h1 className="travel-page-title">{t('categories.travel')}</h1>
-        <div className="title-underline" />
       </div>
 
-      <div className="timeline-container">
-        <div className="timeline-path-line"></div>
-        
-        <div className="timeline-items">
-          {travels.map((trip) => {
-            const lang = i18n.language as 'zh' | 'en' | 'ja';
-            const tripData = trip[lang];
-            return (
-              <div 
-                key={trip.id} 
-                className="timeline-card-wrapper"
-              >
-                <div className="timeline-dot"></div>
-                <div 
-                  className="timeline-item bento-link reveal-on-scroll"
-                  onClick={() => handleTripClick(trip.id)}
-                >
-                  <div className="timeline-content">
-                    <div className="travel-top">
-                      <span className="trip-date-badge">{tripData.date}</span>
-                      <span className="photo-count-badge">
-                        📸 {photoCount[trip.id] || 0}
-                      </span>
-                    </div>
-                    
-                    <h3 className="trip-location">{tripData.location}</h3>
-                    <p className="trip-description">{tripData.short_description}</p>
-                    
-                    <div className="bento-icon-bg travel-bg-icon">
-                      {getEmoji(trip.folder)}
-                    </div>
-                  </div>
+      <div className="travel-list-container">
+        {travels.map((trip, index) => {
+          const lang = i18n.language as 'zh' | 'en' | 'ja';
+          const tripData = trip[lang];
+          return (
+            <div 
+              key={trip.id} 
+              className="travel-strip reveal-on-scroll"
+              style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => handleTripClick(trip.id)}
+            >
+              <div className="strip-main">
+                <h2 className="strip-location">{tripData.location}</h2>
+                <div className="strip-meta">
+                  <span className="strip-date">{tripData.date}</span>
+                  <span className="strip-arrow">→</span>
                 </div>
               </div>
-            );
-          })}
-        </div>
+              <div className="strip-hover-content">
+                <p className="strip-desc">{tripData.short_description}</p>
+                <div className="strip-photo-count">📸 {photoCount[trip.id] || 0} Photos</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

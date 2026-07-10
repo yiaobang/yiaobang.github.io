@@ -42,14 +42,9 @@ const ProjectsPage = () => {
         </div>
 
         <div className="projects-grid">
-          {projects.map((project) => {
-            const CardWrapper = project.isInternal ? Link : 'a';
-            const wrapperProps = project.isInternal 
-              ? { to: project.link, className: 'project-card bento-link' }
-              : { href: project.link, target: '_blank', rel: 'noopener noreferrer', className: 'project-card bento-link' };
-
-            return (
-              <CardWrapper key={project.id} {...wrapperProps as any}>
+          {projects.map((project) => (
+            project.isInternal ? (
+              <Link key={project.id} to={project.link} className="project-card bento-link">
                 <div className="project-content-inner">
                   <div className="project-top">
                     <h3 className="project-name">{t(project.titleKey)}</h3>
@@ -67,9 +62,35 @@ const ProjectsPage = () => {
                   </div>
                 </div>
                 <div className="bento-icon-bg project-bg-icon">{project.icon}</div>
-              </CardWrapper>
-            );
-          })}
+              </Link>
+            ) : (
+              <a
+                key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card bento-link"
+              >
+                <div className="project-content-inner">
+                  <div className="project-top">
+                    <h3 className="project-name">{t(project.titleKey)}</h3>
+                    <span className={`project-status ${project.statusKey === 'status_completed' ? 'completed' : 'in-progress'}`}>
+                      {t(project.statusKey)}
+                    </span>
+                  </div>
+
+                  <p className="project-desc">{t(project.descKey)}</p>
+
+                  <div className="project-tech-clean">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="tech-hash">#{tech}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="bento-icon-bg project-bg-icon">{project.icon}</div>
+              </a>
+            )
+          ))}
         </div>
       </div>
     </div>

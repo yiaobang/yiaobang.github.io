@@ -1,0 +1,191 @@
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
+  padding: 2rem;
+  z-index: 10;
+}
+
+.hero-content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+  animation: floatInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.avatar-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.5s;
+}
+
+.avatar-wrapper:hover .avatar-img {
+  transform: scale(1.05);
+  border-color: var(--color-primary);
+}
+
+.avatar-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  filter: blur(40px);
+  opacity: 0.3;
+  z-index: 1;
+  transition: opacity 0.5s;
+}
+
+.avatar-wrapper:hover .avatar-glow {
+  opacity: 0.6;
+}
+
+.hero-name {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #9eb0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: floatInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-desc {
+  font-family: 'Zhi Mang Xing', 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: #b0c0d0;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  animation: floatInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-location-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+  animation: floatInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-location-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.pill-nav-container {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: floatInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.8rem;
+  background: rgba(30, 30, 35, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+
+.nav-pill svg, .pill-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.nav-pill:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.travel-pill:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+}
+
+.github-pill:hover {
+  background: var(--color-github);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.email-pill:hover {
+  background: var(--color-email);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-pill:hover svg, .nav-pill:hover .pill-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes floatInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-name {
+    font-size: 2.8rem;
+  }
+  .hero-desc {
+    font-size: 1.8rem;
+  }
+  .avatar-img, .avatar-glow {
+    width: 120px;
+    height: 120px;
+  }
+  .nav-pill {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+  }
+}

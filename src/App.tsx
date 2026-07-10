@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import LanguageSelector from "./components/LanguageSelector";
-import BentoGrid from "./components/BentoGrid";
-import TravelPage from "./pages/TravelPage";
-import TravelDetailPage from "./pages/TravelDetailPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ProjectDetailPage from "./pages/ProjectDetailPage";
+import HeroSection from "./components/HeroSection";
 import AnimatedBackground from "./components/AnimatedBackground";
 import "./App.css";
+
+const TravelPage = lazy(() => import("./pages/TravelPage"));
+const TravelDetailPage = lazy(() => import("./pages/TravelDetailPage"));
 
 const NavigationRefinement = () => {
   const { pathname } = useLocation();
@@ -46,7 +45,7 @@ const NavigationRefinement = () => {
 const HomePage = () => {
   return (
     <div className="main-container">
-      <BentoGrid />
+      <HeroSection />
     </div>
   );
 };
@@ -58,14 +57,14 @@ function App() {
         <AnimatedBackground />
         <LanguageSelector />
         <NavigationRefinement />
-        
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/travel" element={<TravelPage />} />
-          <Route path="/travel/:id" element={<TravelDetailPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/project/:id" element={<ProjectDetailPage />} />
-        </Routes>
+
+        <Suspense fallback={<div className="route-loading" aria-live="polite">Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/travel" element={<TravelPage />} />
+            <Route path="/travel/:id" element={<TravelDetailPage />} />
+          </Routes>
+        </Suspense>
       </div>
     </Router>
   );
