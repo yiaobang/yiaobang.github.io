@@ -21,6 +21,24 @@ const HeroSection = () => {
           <LocationIcon /> Osaka
         </div>
 
+        <a
+          href="https://github.com/yiaobang/SerialPortToolFX"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="featured-tool-card"
+        >
+          <span className="featured-tool-mark">⌘</span>
+          <span className="featured-tool-copy">
+            <small>{t('project_title')}</small>
+            <strong>{t('project_serial_tool_title')}</strong>
+            <em>{t('project_serial_tool_desc')}</em>
+            <span className="featured-tool-meta">
+              <b>Java</b><b>JavaFX</b><b>Open source</b>
+            </span>
+          </span>
+          <span className="featured-tool-arrow">↗</span>
+        </a>
+
         <div className="pill-nav-container">
           <Link to="/travel" className="nav-pill travel-pill">
             <span className="pill-icon">🌏</span>

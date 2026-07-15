@@ -1,44 +1,24 @@
 {
   "profile": {
     "name": "Y",
-    "subtitle": "世のことは無理に求めず、楽しみは長く続く",
-    "intro": "こんにちは！日本を拠点に活動する旅行愛好家です。旅の物語を記録し、共有することが好きです。"
+    "subtitle": "世のことは思い通りにはならない、だからこそ喜びを大切に。"
   },
   "categories": {
-    "travel": "旅路"
+    "travel": "旅の記録"
   },
-  "travel_description": "日本各地の旅先での風景や瞬間を記録し、共有しています。",
-  "travel_places": "箇所の場所",
-  "view_travel": "旅路を辿る",
-  "project_title": "個人プロジェクト",
-  "project_description": "ユーティリティアプリからウェブ開発まで、私が手がけた個人プロジェクトを紹介します。",
-  "view_github": "GitHubで見る",
-  "view_details": "詳細を見る",
-  "back_to_home": "← ホームに戻る",
-  "back_to_timeline": "← 旅路に戻る",
-  "back_to_projects": "← プロジェクト一覧に戻る",
+  "project_title": "注目のプロジェクト",
+  "back_to_home": "ホームに戻る",
+  "back_to_timeline": "旅の記録に戻る",
   "photo_gallery": "✨ 旅のスナップ",
   "photos_count": "枚の写真",
   "loading_photos": "写真を読み込み中...",
   "view_full_size": "📷 フルサイズで表示",
   "travel_story": "✨ 旅の記録",
-  "view_photos": "📸 写真を見る",
   "trip_not_found": "旅が見つかりません",
   "load_more": "もっと読み込む",
   "photos_remaining": "枚の写真が残っています",
   "viewer_hint_title": "💡 ヒント",
   "viewer_hint_text": "← → で次/前へ | スクロールでズーム | 画像をクリックして閉じる | ESC で終了",
-  "projects_page_title": "個人プロジェクト",
-  "projects_subtitle": "私のコードと創作物を紹介します。",
   "project_serial_tool_title": "SerialPortToolFX",
-  "project_serial_tool_desc": "多言語対応、クロスプラットフォームで豊富な機能を備えたシリアルデバッグツール。",
-  "project_website_title": "パーソナルウェブサイト",
-  "project_website_desc": "Reactで構築したレスポンシブサイトで、私の旅の記録や個人プロジェクトを紹介しています。",
-  "status_completed": "完了",
-  "status_in_progress": "進行中",
-  "stats_milestones": "行程",
-  "stats_photos": "シャッター",
-  "stats_years": "歴程",
-  "stats_status": "ステータス",
-  "stats_active": "アクティブ"
+  "project_serial_tool_desc": "クロスプラットフォームのシリアルデバッグツール · JavaFX · 3言語対応"
 }

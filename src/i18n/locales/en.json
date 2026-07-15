@@ -1,44 +1,24 @@
 {
   "profile": {
     "name": "Y",
-    "subtitle": "Don't force things, let joy endure.",
-    "intro": "Hi! I'm a travel enthusiast currently based in Japan. I love documenting and sharing the stories of my travels."
+    "subtitle": "Don't force things, let joy endure."
   },
   "categories": {
-    "travel": "Journeys"
+    "travel": "Travel Journal"
   },
-  "travel_description": "Documenting the sights and moments from my travels across Japan.",
-  "travel_places": " places",
-  "view_travel": "Explore Journeys",
-  "project_title": "Personal Projects",
-  "project_description": "A collection of my personal projects, spanning from utility applications to web development.",
-  "view_github": "View on GitHub",
-  "view_details": "View Details",
-  "back_to_home": "← Back to Home",
-  "back_to_timeline": "← Back to Journeys",
-  "back_to_projects": "← Back to Projects",
+  "project_title": "Featured Project",
+  "back_to_home": "Back to Home",
+  "back_to_timeline": "Back to Travel Journal",
   "photo_gallery": "✨ Journey Snapshots",
   "photos_count": " photos",
   "loading_photos": "Loading photos...",
   "view_full_size": "📷 View Full Size",
   "travel_story": "✨ Travelogue",
-  "view_photos": "📸 View Photos",
   "trip_not_found": "Trip not found",
   "load_more": "Load More",
   "photos_remaining": " more photos",
   "viewer_hint_title": "💡 Tip",
   "viewer_hint_text": "← → for next/prev | Scroll to zoom | Click image to close | ESC to exit",
-  "projects_page_title": "Personal Projects",
-  "projects_subtitle": "A showcase of my code and creations.",
   "project_serial_tool_title": "SerialPortToolFX",
-  "project_serial_tool_desc": "A full-featured, cross-platform serial debugging tool with multi-language support.",
-  "project_website_title": "Personal Website",
-  "project_website_desc": "A responsive site built with React to showcase my travel stories and personal projects.",
-  "status_completed": "Completed",
-  "status_in_progress": "In Progress",
-  "stats_milestones": "Journeys",
-  "stats_photos": "Photos",
-  "stats_years": "Years Active",
-  "stats_status": "Status",
-  "stats_active": "Active Explorer"
+  "project_serial_tool_desc": "Cross-platform serial debugging · JavaFX · Chinese, English & Japanese"
 }

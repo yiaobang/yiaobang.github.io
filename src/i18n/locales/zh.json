@@ -1,44 +1,24 @@
 {
   "profile": {
     "name": "Y",
-    "subtitle": "世事不可强求，快乐长存",
-    "intro": "你好！我是一名旅行爱好者，目前居住在日本。我喜欢记录生活中的美好，分享旅途中的所见所闻。"
+    "subtitle": "世事不可强求，快乐长存"
   },
   "categories": {
-    "travel": "足迹"
+    "travel": "游记"
   },
-  "travel_description": "记录旅途中的风景与瞬间，分享我在日本的脚步。",
-  "travel_places": "个地点",
-  "view_travel": "查看足迹",
-  "project_title": "个人项目",
-  "project_description": "这里是一些我开发的个人项目，涵盖了工具应用和Web开发等领域。",
-  "view_github": "在GitHub上查看",
-  "view_details": "查看详情",
-  "back_to_home": "← 返回主页",
-  "back_to_timeline": "← 返回足迹",
-  "back_to_projects": "← 返回项目列表",
+  "project_title": "代表作品",
+  "back_to_home": "返回主页",
+  "back_to_timeline": "返回游记",
   "photo_gallery": "✨ 旅途掠影",
   "photos_count": "张照片",
   "loading_photos": "照片加载中...",
   "view_full_size": "📷 查看大图",
   "travel_story": "✨ 旅途见闻",
-  "view_photos": "📸 查看照片",
   "trip_not_found": "未找到此行程",
   "load_more": "加载更多",
   "photos_remaining": "张剩余",
   "viewer_hint_title": "💡 操作提示",
   "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出",
-  "projects_page_title": "个人项目",
-  "projects_subtitle": "我的一些开发实践和作品",
   "project_serial_tool_title": "SerialPortToolFX",
-  "project_serial_tool_desc": "一款功能完善、跨平台的串口调试工具，支持多语言。",
-  "project_website_title": "个人网站",
-  "project_website_desc": "一个使用React构建的响应式网站，用来展示我的旅行见闻与个人项目。",
-  "status_completed": "已完成",
-  "status_in_progress": "进行中",
-  "stats_milestones": "次旅程",
-  "stats_photos": "张快门",
-  "stats_years": "跨越年份",
-  "stats_status": "当前状态",
-  "stats_active": "活跃探索者"
+  "project_serial_tool_desc": "跨平台串口调试工具 · JavaFX · 中英日界面"
 }
