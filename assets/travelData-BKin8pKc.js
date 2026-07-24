@@ -1,1 +1,0 @@
-let s=null,a=null;const e=async t=>{const o=await fetch(t);if(!o.ok)throw new Error(`Failed to load ${t}: ${o.status}`);return o.json()},r=()=>(s??=e("/data/travels.json"),s),l=()=>(a??=e("/data/photos.json"),a),n=async()=>{const[t,o]=await Promise.all([r(),l()]);return{travels:t,photosByTravelId:o}};export{n as l};
