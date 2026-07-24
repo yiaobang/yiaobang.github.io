@@ -18,12 +18,17 @@ const LanguageSelector = () => {
         setIsOpen(false);
       }
     };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -39,49 +44,63 @@ const LanguageSelector = () => {
 
   return (
     <div className={`language-selector-wrapper ${isOpen ? 'active' : ''}`} ref={containerRef}>
-      <button 
-        className="language-selector-pill" 
+      <button
+        className="language-selector-pill"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Select Language"
+        aria-expanded={isOpen}
+        aria-controls="language-menu"
       >
-        <span className="language-icon">🌐</span>
         <span className="language-label">{currentConfig.display}</span>
-        <span className={`chevron ${isOpen ? 'open' : ''}`}>▾</span>
+        <span className={`chevron ${isOpen ? 'open' : ''}`} aria-hidden="true">↓</span>
       </button>
 
-      {/* Desktop Dropdown */}
-      <div className={`language-dropdown ${isOpen ? 'show' : ''}`}>
+      <div
+        className={`language-dropdown ${isOpen ? 'show' : ''}`}
+        id="language-menu"
+        aria-hidden={!isOpen}
+      >
         {langConfig.map((lang) => (
-          <div 
+          <button
+            type="button"
             key={lang.code}
             className={`dropdown-item ${currentLang === lang.code ? 'active' : ''}`}
             onClick={() => handleLanguageChange(lang.code)}
+            aria-current={currentLang === lang.code ? 'true' : undefined}
           >
             {lang.label}
-          </div>
+          </button>
         ))}
       </div>
 
-      {/* Mobile Bottom Sheet Overlay */}
-      <div 
-        className={`mobile-language-overlay ${isOpen ? 'show' : ''}`} 
+      <div
+        className={`mobile-language-overlay ${isOpen ? 'show' : ''}`}
         onClick={() => setIsOpen(false)}
+        aria-hidden="true"
       />
-      <div className={`mobile-language-sheet ${isOpen ? 'show' : ''}`}>
-        <div className="sheet-handle"></div>
+      <div
+        className={`mobile-language-sheet ${isOpen ? 'show' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!isOpen}
+        aria-labelledby="language-sheet-title"
+      >
+        <div className="sheet-handle" aria-hidden="true"></div>
         <div className="sheet-header">
-           <h3>{currentLang === 'zh' ? '选择语言' : currentLang === 'ja' ? '言語を選択' : 'Select Language'}</h3>
+           <h3 id="language-sheet-title">{currentLang === 'zh' ? '选择语言' : currentLang === 'ja' ? '言語を選択' : 'Select Language'}</h3>
         </div>
         <div className="sheet-items">
           {langConfig.map((lang) => (
-            <div 
+            <button
+              type="button"
               key={lang.code}
               className={`sheet-item ${currentLang === lang.code ? 'active' : ''}`}
               onClick={() => handleLanguageChange(lang.code)}
+              aria-current={currentLang === lang.code ? 'true' : undefined}
             >
               <span className="item-label">{lang.label}</span>
-              {currentLang === lang.code && <span className="item-check">✓</span>}
-            </div>
+              {currentLang === lang.code && <span className="item-check" aria-hidden="true">✓</span>}
+            </button>
           ))}
         </div>
         <button className="sheet-close" onClick={() => setIsOpen(false)}>

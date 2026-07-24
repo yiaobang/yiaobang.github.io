@@ -1,7 +1,8 @@
 {
   "profile": {
     "name": "Y",
-    "subtitle": "世事不可强求，快乐长存"
+    "subtitle": "世事不可强求，快乐长存",
+    "kicker": "代码 · 旅途 · 日常"
   },
   "categories": {
     "travel": "游记"
@@ -12,13 +13,36 @@
   "photo_gallery": "✨ 旅途掠影",
   "photos_count": "张照片",
   "loading_photos": "照片加载中...",
-  "view_full_size": "📷 查看大图",
+  "view_full_size": "查看大图",
   "travel_story": "✨ 旅途见闻",
   "trip_not_found": "未找到此行程",
-  "load_more": "加载更多",
-  "photos_remaining": "张剩余",
-  "viewer_hint_title": "💡 操作提示",
-  "viewer_hint_text": "← → 键盘翻页 | 滚轮缩放 | 点击图片关闭 | ESC 退出",
-  "project_serial_tool_title": "SerialPortToolFX",
-  "project_serial_tool_desc": "跨平台串口调试工具 · JavaFX · 中英日界面"
+  "gallery_range": "正在显示第 {{start}}–{{end}} 张，共 {{total}} 张",
+  "photo_alt": "旅途照片 {{number}}",
+  "open_photo": "打开第 {{number}} 张照片",
+  "photo_pagination": "照片分页",
+  "previous": "上一页",
+  "next": "下一页",
+  "previous_page": "上一页照片",
+  "next_page": "下一页照片",
+  "go_to_page": "前往第 {{page}} 页",
+  "page_status": "第 {{current}} / {{total}} 页",
+  "photo_viewer": "照片查看器",
+  "close_viewer": "关闭照片查看器",
+  "previous_photo": "上一张照片",
+  "next_photo": "下一张照片",
+  "zoom_controls": "缩放控制",
+  "zoom_in": "放大",
+  "zoom_out": "缩小",
+  "reset_zoom": "重置缩放",
+  "photo_thumbnails": "照片缩略图",
+  "viewer_controls_hint": "← → 切换照片 · 滚轮缩放 · 双击图片快速放大 · ESC 退出",
+  "project_flagship": "当前主力",
+  "project_tabs_label": "选择代表作品",
+  "primary_navigation": "主要导航",
+  "travel_glimpse": "从旅途中带回的片段",
+  "open_travel_journal": "打开游记",
+  "visit_project": "在 GitHub 查看 {{name}}",
+  "project_view_action": "查看项目",
+  "project_kserial_desc": "跨平台串口工作台 · 终端、设备模拟与串口桥接",
+  "project_serial_tool_desc": "实用串口调试工具 · JavaFX · 中英日界面"
 }

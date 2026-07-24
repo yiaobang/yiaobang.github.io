@@ -37,17 +37,21 @@ const AnimatedBackground = () => {
 
     const createBlobs = () => {
       const blobs: Blob[] = [];
-      const colors = ['rgba(100, 200, 255, 0.3)', 'rgba(255, 100, 200, 0.3)', 'rgba(200, 255, 100, 0.3)', 'rgba(255, 200, 100, 0.3)'];
-      
-      for (let i = 0; i < 6; i++) {
+      const colors = [
+        'rgba(139, 92, 246, 0.15)',
+        'rgba(73, 112, 255, 0.1)',
+        'rgba(192, 132, 252, 0.08)',
+      ];
+
+      for (let i = 0; i < 4; i++) {
         blobs.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 200 + 100,
+          vx: (Math.random() - 0.5) * 0.16,
+          vy: (Math.random() - 0.5) * 0.16,
+          size: Math.random() * 240 + 220,
           color: colors[Math.floor(Math.random() * colors.length)],
-          opacity: Math.random() * 0.4 + 0.2,
+          opacity: Math.random() * 0.22 + 0.12,
         });
       }
       return blobs;
@@ -59,9 +63,8 @@ const AnimatedBackground = () => {
       
       // Update blobs
       blobsRef.current.forEach((blob, index) => {
-        // Smooth movement with sine waves
-        blob.x += blob.vx + Math.sin(timeRef.current + index) * 0.2;
-        blob.y += blob.vy + Math.cos(timeRef.current + index) * 0.2;
+        blob.x += blob.vx + Math.sin(timeRef.current + index) * 0.06;
+        blob.y += blob.vy + Math.cos(timeRef.current + index) * 0.06;
         
         // Bounce off edges
         if (blob.x < -blob.size/2) blob.x = window.innerWidth + blob.size/2;
@@ -69,8 +72,7 @@ const AnimatedBackground = () => {
         if (blob.y < -blob.size/2) blob.y = window.innerHeight + blob.size/2;
         if (blob.y > window.innerHeight + blob.size/2) blob.y = -blob.size/2;
         
-        // Pulsing size
-        const currentSize = blob.size + Math.sin(timeRef.current * 2 + index) * 20;
+        const currentSize = blob.size + Math.sin(timeRef.current * 1.4 + index) * 12;
         
         // Create gradient
         const gradient = ctx.createRadialGradient(
@@ -81,11 +83,13 @@ const AnimatedBackground = () => {
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         
         ctx.fillStyle = gradient;
-        ctx.filter = 'blur(20px)';
+        ctx.globalAlpha = blob.opacity;
+        ctx.filter = 'blur(42px)';
         ctx.beginPath();
         ctx.arc(blob.x, blob.y, currentSize, 0, Math.PI * 2);
         ctx.fill();
         ctx.filter = 'none';
+        ctx.globalAlpha = 1;
       });
       
 

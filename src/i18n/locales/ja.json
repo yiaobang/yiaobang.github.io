@@ -1,7 +1,8 @@
 {
   "profile": {
     "name": "Y",
-    "subtitle": "世のことは思い通りにはならない、だからこそ喜びを大切に。"
+    "subtitle": "世のことは思い通りにはならない、だからこそ喜びを大切に。",
+    "kicker": "コード · 旅 · 日々"
   },
   "categories": {
     "travel": "旅の記録"
@@ -12,13 +13,36 @@
   "photo_gallery": "✨ 旅のスナップ",
   "photos_count": "枚の写真",
   "loading_photos": "写真を読み込み中...",
-  "view_full_size": "📷 フルサイズで表示",
+  "view_full_size": "フルサイズで表示",
   "travel_story": "✨ 旅の記録",
   "trip_not_found": "旅が見つかりません",
-  "load_more": "もっと読み込む",
-  "photos_remaining": "枚の写真が残っています",
-  "viewer_hint_title": "💡 ヒント",
-  "viewer_hint_text": "← → で次/前へ | スクロールでズーム | 画像をクリックして閉じる | ESC で終了",
-  "project_serial_tool_title": "SerialPortToolFX",
-  "project_serial_tool_desc": "クロスプラットフォームのシリアルデバッグツール · JavaFX · 3言語対応"
+  "gallery_range": "{{total}}枚中 {{start}}–{{end}}枚を表示",
+  "photo_alt": "旅の写真 {{number}}",
+  "open_photo": "{{number}}枚目の写真を開く",
+  "photo_pagination": "写真のページ切り替え",
+  "previous": "前へ",
+  "next": "次へ",
+  "previous_page": "前の写真ページ",
+  "next_page": "次の写真ページ",
+  "go_to_page": "{{page}}ページへ移動",
+  "page_status": "{{current}} / {{total}} ページ",
+  "photo_viewer": "写真ビューアー",
+  "close_viewer": "写真ビューアーを閉じる",
+  "previous_photo": "前の写真",
+  "next_photo": "次の写真",
+  "zoom_controls": "ズーム操作",
+  "zoom_in": "拡大",
+  "zoom_out": "縮小",
+  "reset_zoom": "ズームをリセット",
+  "photo_thumbnails": "写真のサムネイル",
+  "viewer_controls_hint": "← → で写真を切替 · スクロールでズーム · ダブルクリックで拡大 · ESCで閉じる",
+  "project_flagship": "メイン",
+  "project_tabs_label": "注目のプロジェクトを選択",
+  "primary_navigation": "メインナビゲーション",
+  "travel_glimpse": "旅先から持ち帰ったひとこま",
+  "open_travel_journal": "旅の記録を開く",
+  "visit_project": "GitHubで{{name}}を見る",
+  "project_view_action": "プロジェクトを見る",
+  "project_kserial_desc": "クロスプラットフォームのシリアルワークベンチ · 端末・シミュレーター・ブリッジ",
+  "project_serial_tool_desc": "実用的なシリアルツール · JavaFX · 中国語・英語・日本語対応"
 }

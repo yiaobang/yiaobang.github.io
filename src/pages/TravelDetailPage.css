@@ -1,9 +1,41 @@
 .travel-detail-page {
+  width: 100%;
   min-height: 100vh;
   padding: 2rem 4rem;
   color: var(--color-text);
   max-width: 1200px;
   margin: 0 auto;
+  overflow-x: clip;
+}
+
+.travel-detail-page .travel-top-nav {
+  margin-bottom: 2rem;
+}
+
+.travel-detail-page .pill-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.travel-detail-page .pill-back-button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--color-text-muted);
+  transform: translateY(-2px);
+}
+
+.travel-detail-page .pill-back-button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 .detail-header {
@@ -32,33 +64,46 @@
 }
 
 .photo-gallery {
+  min-width: 0;
   margin-bottom: 5rem;
+  scroll-margin-top: 1.5rem;
 }
 
 .gallery-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
 }
 
 .gallery-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
   margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.gallery-page-summary {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0.35rem 0 0;
 }
 
 .gallery-count {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--color-text-muted);
+  white-space: nowrap;
 }
 
 .photos-grid {
+  width: 100%;
+  min-width: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.65rem, 1.8vw, 1.25rem);
 }
 
 @keyframes floatUpPhoto {
@@ -70,16 +115,23 @@
 
 .photo-item {
   position: relative;
-  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
+  color: #fff;
   opacity: 0;
   transform: translateY(20px);
-  animation: floatUpPhoto 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: floatUpPhoto 0.55s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   contain: layout paint style;
   content-visibility: auto;
-  contain-intrinsic-size: 250px;
+  contain-intrinsic-size: 360px 270px;
   background: var(--color-surface);
+  text-align: left;
+  isolation: isolate;
 }
 
 .photo-item:nth-child(1) { animation-delay: 0.05s; }
@@ -89,75 +141,148 @@
 .photo-item:nth-child(n+5) { animation-delay: 0.25s; }
 
 .photo-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.34);
   z-index: 2;
+}
+
+.photo-item:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
 }
 
 .photo-image {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1), filter 0.35s ease;
 }
 
 .photo-item:hover .photo-image {
-  transform: scale(1.05);
+  transform: scale(1.035);
+  filter: brightness(0.78);
 }
 
-.photo-image[loading="lazy"] {
-  opacity: 0;
-  animation: fadeIn 0.4s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
+.photo-number {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.75rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: rgba(9, 9, 11, 0.68);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  backdrop-filter: blur(8px);
 }
 
 .photo-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 52%);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1rem;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
   color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-size: 0.9rem;
+  font-weight: 650;
 }
 
-.photo-item:hover .photo-overlay {
+.photo-item:hover .photo-overlay,
+.photo-item:focus-visible .photo-overlay {
   opacity: 1;
 }
 
-.load-more-container {
+.gallery-pagination {
+  position: relative;
   display: flex;
-  justify-content: center;
-  margin-top: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.load-more-button {
-  background: transparent;
+.pagination-direction,
+.pagination-page {
+  min-width: 2.75rem;
+  height: 2.75rem;
   border: 1px solid var(--color-border);
   color: var(--color-text);
-  padding: 0.8rem 2.5rem;
-  border-radius: 30px;
+  background: transparent;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.load-more-button:hover {
+.pagination-direction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.pagination-page {
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+}
+
+.pagination-page.active {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+  font-weight: 750;
+}
+
+.pagination-direction:hover:not(:disabled),
+.pagination-page:hover:not(.active) {
   background: var(--color-surface);
   border-color: var(--color-text-muted);
   transform: translateY(-2px);
+}
+
+.pagination-direction:focus-visible,
+.pagination-page:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.pagination-direction:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  color: var(--color-text);
+  width: 1.5rem;
+  text-align: center;
+}
+
+.pagination-mobile-status {
+  display: none;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Magazine Style Story Text */
@@ -226,15 +351,94 @@
   }
   
   .photos-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
-  
-  .photo-image {
-    height: 150px;
-  }
-  
+
   .trip-story {
     margin-top: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .travel-detail-page {
+    padding: 1rem;
+  }
+
+  .detail-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .detail-title {
+    font-size: clamp(2.35rem, 12vw, 3rem);
+  }
+
+  .gallery-header {
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .gallery-count {
+    padding-bottom: 0.15rem;
+  }
+
+  .photos-grid {
+    gap: 0.55rem;
+  }
+
+  .photo-item {
+    aspect-ratio: 1 / 1;
+    border-radius: 7px;
+  }
+
+  .photo-number {
+    top: 0.5rem;
+    left: 0.5rem;
+    min-width: 2rem;
+    height: 1.5rem;
+    font-size: 0.7rem;
+  }
+
+  .photo-overlay {
+    display: none;
+  }
+
+  .pagination-pages {
+    display: none;
+  }
+
+  .pagination-direction {
+    min-width: 3rem;
+    padding: 0 0.9rem;
+  }
+
+  .pagination-direction-label {
+    display: none;
+  }
+
+  .pagination-mobile-status {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .photo-image,
+  .photo-overlay,
+  .pagination-direction,
+  .pagination-page {
+    transition-duration: 0.01ms;
+  }
+
+  .photo-item:hover {
+    transform: none;
   }
 }
