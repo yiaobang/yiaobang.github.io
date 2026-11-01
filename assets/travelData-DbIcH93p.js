@@ -1,0 +1,1 @@
+var e=async e=>{let t=await fetch(e);if(!t.ok)throw Error(`Failed to load ${e}: ${t.status}`);return t.json()},t=e=>{let t=null;return()=>(t??=e().catch(e=>{throw t=null,e}),t)},n=t(()=>e(`/data/travels.json`)),r=t(()=>e(`/data/photos.json`)),i=async()=>{let[e,t]=await Promise.all([n(),r()]);return{travels:e,photosByTravelId:t}};export{i as t};
