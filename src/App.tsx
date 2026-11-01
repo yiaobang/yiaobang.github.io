@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import LanguageSelector from "./components/LanguageSelector";
 import HeroSection from "./components/HeroSection";
 import AnimatedBackground from "./components/AnimatedBackground";
+import NotFoundPage from "./pages/NotFoundPage";
 import "./App.css";
 
 const TravelPage = lazy(() => import("./pages/TravelPage"));
@@ -63,6 +64,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/travel" element={<TravelPage />} />
             <Route path="/travel/:id" element={<TravelDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </div>

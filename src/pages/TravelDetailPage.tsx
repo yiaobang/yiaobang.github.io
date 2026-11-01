@@ -59,9 +59,8 @@ const TravelDetailPage = () => {
   const photos = useMemo(() => {
     if (!travelData) return [];
 
-    return (photosList[travelData.id] || []).map((photo) =>
-      photo.replace(/\.jpe?g$/i, '.webp')
-    );
+    // photos.json 里的路径由 convert-webp 生成，已经是 .webp
+    return photosList[travelData.id] || [];
   }, [photosList, travelData]);
 
   const displayPhotos = useMemo(() => photos.map(toDisplayImagePath), [photos]);

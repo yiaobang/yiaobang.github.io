@@ -21,6 +21,10 @@
   animation: viewerSurfaceIn 0.28s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
+.photo-viewer:focus {
+  outline: none;
+}
+
 .viewer-toolbar {
   position: relative;
   z-index: 4;
@@ -132,8 +136,10 @@
     radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.035), transparent 46%),
     #050506;
   touch-action: none;
+  overscroll-behavior: contain;
   cursor: zoom-in;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .viewer-stage.is-zoomed {
@@ -144,20 +150,42 @@
   cursor: grabbing;
 }
 
+/* 加载期间先铺一层放大的模糊缩略图，避免纯黑等待 */
+.viewer-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(18px) saturate(0.85);
+  opacity: 0.45;
+  transform: scale(1.08);
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.viewer-placeholder.is-hidden {
+  opacity: 0;
+}
+
 .viewer-image {
+  position: relative;
+  z-index: 1;
   display: block;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   opacity: 1;
   transform-origin: center;
-  transition: opacity 0.2s ease, transform 0.24s cubic-bezier(0.25, 1, 0.5, 1);
+  /* 跟手拖动时必须没有过渡；只有按钮/双击缩放才加动画 */
+  transition: opacity 0.2s ease;
   will-change: transform;
   pointer-events: none;
 }
 
-.viewer-stage.is-panning .viewer-image {
-  transition: opacity 0.2s ease;
+.viewer-image.is-animating {
+  transition: opacity 0.2s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .viewer-image.is-loading {
@@ -167,7 +195,7 @@
 .viewer-loading {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   place-items: center;
   pointer-events: none;

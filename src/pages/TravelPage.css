@@ -173,6 +173,59 @@
   }
 }
 
+/* Loading / error state */
+.travel-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 40vh;
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.travel-status-text {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.travel-status-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-top-color: var(--color-text);
+  border-radius: 50%;
+  animation: travelStatusSpin 0.8s linear infinite;
+}
+
+.travel-status-action {
+  min-height: 2.5rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.travel-status-action:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--color-text-muted);
+}
+
+.travel-status-action:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@keyframes travelStatusSpin {
+  to { transform: rotate(360deg); }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 992px) {
   .travel-page {

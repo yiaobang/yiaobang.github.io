@@ -7,6 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const publicDir = path.join(__dirname, 'public');
+// 原图不在 public 里（那会被整包复制进部署产物），只作为变体的输入来源
+const originalsDir = path.join(__dirname, 'originals');
 const photosJsonPath = path.join(publicDir, 'data', 'photos.json');
 
 const variants = [
@@ -56,7 +58,7 @@ async function main() {
 
   for (const publicPath of photoPaths) {
     const normalizedPath = publicPath.replace(/^\//, '');
-    const inputPath = path.join(publicDir, normalizedPath);
+    const inputPath = path.join(originalsDir, normalizedPath);
 
     for (const variant of variants) {
       const outputPublicPath = normalizedPath.replace(/^images\//, `${variant.root}/`);

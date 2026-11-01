@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useRef, useEffect } from 'react';
+import { storeLanguage } from '../i18n/languages';
 import './LanguageSelector.css';
 
 const LanguageSelector = () => {
@@ -8,6 +9,7 @@ const LanguageSelector = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleLanguageChange = (lang: string) => {
+    storeLanguage(lang);
     i18n.changeLanguage(lang);
     setIsOpen(false);
   };

@@ -8,7 +8,7 @@
 - 🛫 **Travel (游记)**：记录我走过的地方，使用图文与画廊组件进行回顾。
 - 💻 **SerialPortToolFX**：我的跨平台串口调试工具，可从首页直接跳转至 GitHub 仓库。
 
-界面设计力求极简，原生支持多语言（中/英），并非常注重各种设备上的图片渲染和响应速度。
+界面设计力求极简，原生支持多语言（中/日/英），并非常注重各种设备上的图片渲染和响应速度。
 
 ## 🛠 它是如何构建的？（技术架构）
 
@@ -19,6 +19,28 @@
 - **多语言适配**：基于 `i18next` 与 `react-i18next` 的动态翻译方案
 - **自动化与性能优化**：内部使用了 Node.js 加上 `sharp` 图像处理库编写了批量转换 `.webp` 的脚本，有效减少图片带宽占用。
 - **宿主与部署**：通过 `gh-pages` 配合 GitHub Pages 进行全静态分发。
+
+## 🖼 图片资源分层
+
+站点同时维护三套图片，运行时按用途各取所需：
+
+| 目录 | 用途 | 规格 | 是否部署 |
+| --- | --- | --- | --- |
+| `originals/images/` | 原图，仅作为生成变体的输入 | 原始尺寸 | ❌ |
+| `public/images-display/` | 灯箱大图 | 最长边 ≤1920 · WebP q76 | ✅ |
+| `public/images-thumb/` | 列表与胶片条缩略图 | 360×260 cover · WebP q62 | ✅ |
+
+原图刻意放在 `public/` 之外。原因很实在：Vite 会把 `public/` 整个复制进构建产物，
+而运行时从来没请求过原图——它只会让每次部署凭空多出 470MB。移出之后，
+`dist` 从 564MB 降到约 94MB，页面加载行为完全不变。
+
+## 📝 新增一次游记
+
+1. 照片放进 `originals/images/<序号>.<名称>/`
+2. `npm run convert-webp` —— 转成 WebP 并重建 `public/data/photos.json`
+3. `npm run optimize-images` —— 生成 display / thumb 两档变体（已存在的会跳过）
+4. 在 `public/data/travels.json` 补一条记录，`id` 与文件夹序号保持一致，中/日/英各写一份文案
+5. `npm run dev` 本地预览；`npm run deploy` 发布（会自动先构建）
 
 ## 🗺 架构巧思：关于路由 (HashRouter) 的选择
 

@@ -14,7 +14,7 @@ interface Blob {
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const blobsRef = useRef<Blob[]>([]);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const timeRef = useRef<number>(0);
 
   useEffect(() => {

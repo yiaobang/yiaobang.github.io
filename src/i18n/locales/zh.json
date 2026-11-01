@@ -4,6 +4,10 @@
     "subtitle": "世事不可强求，快乐长存",
     "kicker": "代码 · 旅途 · 日常"
   },
+  "meta": {
+    "title": "yiaobang · 代码、旅途与日常",
+    "description": "yiaobang 的个人网站 —— 旅途见闻、KSerial 串口工作台，以及一些跨平台小项目。"
+  },
   "categories": {
     "travel": "游记"
   },
@@ -16,6 +20,10 @@
   "view_full_size": "查看大图",
   "travel_story": "✨ 旅途见闻",
   "trip_not_found": "未找到此行程",
+  "travel_load_error": "游记数据加载失败，请检查网络后重试。",
+  "retry": "重试",
+  "not_found_title": "页面不存在",
+  "not_found_desc": "这个地址似乎走错了，回到首页重新出发吧。",
   "gallery_range": "正在显示第 {{start}}–{{end}} 张，共 {{total}} 张",
   "photo_alt": "旅途照片 {{number}}",
   "open_photo": "打开第 {{number}} 张照片",
@@ -35,7 +43,7 @@
   "zoom_out": "缩小",
   "reset_zoom": "重置缩放",
   "photo_thumbnails": "照片缩略图",
-  "viewer_controls_hint": "← → 切换照片 · 滚轮缩放 · 双击图片快速放大 · ESC 退出",
+  "viewer_controls_hint": "← → 切换照片 · 滚轮或双指缩放 · 放大后拖动查看 · 双击快速放大 · ESC 退出",
   "project_flagship": "当前主力",
   "project_tabs_label": "选择代表作品",
   "primary_navigation": "主要导航",

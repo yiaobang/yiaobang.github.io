@@ -4,6 +4,10 @@
     "subtitle": "世のことは思い通りにはならない、だからこそ喜びを大切に。",
     "kicker": "コード · 旅 · 日々"
   },
+  "meta": {
+    "title": "yiaobang · コードと旅と日常",
+    "description": "yiaobang の個人サイト — 旅の記録、シリアルツール KSerial、そしてクロスプラットフォームの小さなプロジェクト集。"
+  },
   "categories": {
     "travel": "旅の記録"
   },
@@ -16,6 +20,10 @@
   "view_full_size": "フルサイズで表示",
   "travel_story": "✨ 旅の記録",
   "trip_not_found": "旅が見つかりません",
+  "travel_load_error": "旅の記録を読み込めませんでした。通信環境を確認して再試行してください。",
+  "retry": "再試行",
+  "not_found_title": "ページが見つかりません",
+  "not_found_desc": "このアドレスには何もありません。ホームに戻りましょう。",
   "gallery_range": "{{total}}枚中 {{start}}–{{end}}枚を表示",
   "photo_alt": "旅の写真 {{number}}",
   "open_photo": "{{number}}枚目の写真を開く",
@@ -35,7 +43,7 @@
   "zoom_out": "縮小",
   "reset_zoom": "ズームをリセット",
   "photo_thumbnails": "写真のサムネイル",
-  "viewer_controls_hint": "← → で写真を切替 · スクロールでズーム · ダブルクリックで拡大 · ESCで閉じる",
+  "viewer_controls_hint": "← → で写真を切替 · ホイール / ピンチでズーム · 拡大後はドラッグで移動 · ダブルクリックで拡大 · ESC で閉じる",
   "project_flagship": "メイン",
   "project_tabs_label": "注目のプロジェクトを選択",
   "primary_navigation": "メインナビゲーション",

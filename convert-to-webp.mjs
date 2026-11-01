@@ -6,8 +6,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const imagesDir = path.join(__dirname, 'public', 'images');
+const imagesDir = path.join(__dirname, 'originals', 'images');
 const photosData = {};
+
+/** 原图的绝对路径 → 站点上的公开路径 /images/... */
+const toPublicPath = (absolutePath) =>
+  '/' + path.relative(path.join(__dirname, 'originals'), absolutePath).replace(/\\/g, '/');
 
 async function convertToWebP(filePath) {
   const webpPath = filePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
@@ -47,13 +51,11 @@ async function processDirectory(dir) {
     for (const file of imageFiles) {
       const filePath = path.join(folderPath, file);
       if (file.toLowerCase().endsWith('.webp')) {
-        const relativePath = filePath.replace(/\\/g, '/').split('public')[1];
-        webpPaths.push(relativePath);
+        webpPaths.push(toPublicPath(filePath));
       } else {
         const webpPath = await convertToWebP(filePath);
         if (webpPath) {
-          const relativePath = webpPath.replace(/\\/g, '/').split('public')[1];
-          webpPaths.push(relativePath);
+          webpPaths.push(toPublicPath(webpPath));
         }
       }
     }

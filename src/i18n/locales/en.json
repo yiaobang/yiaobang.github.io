@@ -4,6 +4,10 @@
     "subtitle": "Don't force things, let joy endure.",
     "kicker": "Code · Journeys · Everyday"
   },
+  "meta": {
+    "title": "yiaobang · code, travel & everyday",
+    "description": "The personal site of yiaobang — travel journals, the KSerial serial toolkit, and a small portfolio of cross-platform projects."
+  },
   "categories": {
     "travel": "Travel Journal"
   },
@@ -16,6 +20,10 @@
   "view_full_size": "View full size",
   "travel_story": "✨ Travelogue",
   "trip_not_found": "Trip not found",
+  "travel_load_error": "Couldn't load the travel data. Check your connection and try again.",
+  "retry": "Retry",
+  "not_found_title": "Page not found",
+  "not_found_desc": "This address doesn't lead anywhere. Let's head back home.",
   "gallery_range": "Showing {{start}}–{{end}} of {{total}}",
   "photo_alt": "Travel photo {{number}}",
   "open_photo": "Open photo {{number}}",
@@ -35,7 +43,7 @@
   "zoom_out": "Zoom out",
   "reset_zoom": "Reset zoom",
   "photo_thumbnails": "Photo thumbnails",
-  "viewer_controls_hint": "← → change photo · Scroll to zoom · Double-click to enlarge · ESC to close",
+  "viewer_controls_hint": "← → change photo · Scroll or pinch to zoom · Drag to pan · Double-click to enlarge · ESC to close",
   "project_flagship": "Flagship",
   "project_tabs_label": "Choose a featured project",
   "primary_navigation": "Primary navigation",
